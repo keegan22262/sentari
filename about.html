@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Sentari Psychology</title>
+<meta name="description" content="Meet Dr. Amara Njoki, Clinical Psychologist and founder of Sentari Psychology — Nairobi, Kenya & online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .sentari-page {
+    --olive:   #6F7B6F;
+    --cream:   #EEE6DB;
+    --blush:   #EACBC4;
+    --moss:    #BCB8A7;
+    --sage:    #909A97;
+    --stone:   #7B868E;
+    --ink:     #2C3530;
+    --surface: #FAF6EE;
+    --white:   #FFFFFF;
+    --border:  rgba(44,53,48,0.10);
+
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background-color: var(--cream);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sentari-page *, .sentari-page *::before, .sentari-page *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sentari-page a { color: inherit; text-decoration: none; }
+  .sentari-page img { display: block; width: 100%; }
+
+  .s-topbar {
+    background: var(--olive);
+    color: var(--cream);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+
+  .s-nav {
+    background: var(--surface);
+    padding: 18px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .s-nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .s-nav-logo span {
+    color: var(--olive);
+    font-style: italic;
+  }
+
+  .s-nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    font-size: 13.5px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .s-nav-links a { color: var(--ink); transition: color 0.2s; }
+  .s-nav-links a:hover { color: var(--olive); }
+  .s-nav-links .active { color: var(--olive); }
+
+  .s-nav-cta {
+    background: var(--olive);
+    color: var(--surface) !important;
+    padding: 11px 26px;
+    border-radius: 2px;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .s-nav-cta:hover { background: var(--ink) !important; }
+
+  .s-page-header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 100px 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .s-page-header-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .s-page-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 24px;
+  }
+
+  .s-page-header h1 em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .s-page-header p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--moss);
+    max-width: 480px;
+  }
+
+  .s-page-header-img {
+    height: 420px;
+    background: url('https://picsum.photos/seed/therapist1/600/420') center/cover no-repeat;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .s-page-header-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(111,123,111,0.25), transparent);
+  }
+
+  .s-intro {
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+    background: var(--surface);
+  }
+
+  .s-intro-img-wrap {
+    position: sticky;
+    top: 100px;
+  }
+
+  .s-intro-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    background: url('https://picsum.photos/seed/therapist2/480/640') center/cover no-repeat;
+    border-radius: 4px;
+  }
+
+  .s-intro-caption {
+    margin-top: 14px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-align: center;
+  }
+
+  .s-section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .s-section-label::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--olive);
+    opacity: 0.5;
+  }
+
+  .s-intro-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .s-intro-content h2 em {
+    font-style: italic;
+    color: var(--olive);
+  }
+
+  .s-intro-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #4a5250;
+    margin-bottom: 22px;
+  }
+
+  .s-quote {
+    margin: 36px 0;
+    padding: 28px 36px;
+    border-left: 3px solid var(--blush);
+    background: var(--cream);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .s-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .s-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .s-credentials {
+    padding: 80px 60px;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+  }
+
+  .s-credentials-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .s-credentials-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    color: var(--ink);
+    margin-top: 14px;
+  }
+
+  .s-cred-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .s-cred-card {
+    background: var(--surface);
+    padding: 36px 30px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .s-cred-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--olive);
+  }
+
+  .s-cred-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 18px;
+    opacity: 0.7;
+  }
+
+  .s-cred-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .s-cred-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--sage);
+  }
+
+  .s-cred-year {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--olive);
+    font-weight: 600;
+  }
+
+  .s-values {
+    background: var(--olive);
+    padding: 100px 60px;
+    color: var(--cream);
+  }
+
+  .s-values-header {
+    max-width: 560px;
+    margin-bottom: 64px;
+  }
+
+  .s-values-header .s-section-label {
+    color: var(--blush);
+  }
+
+  .s-values-header .s-section-label::after {
+    background: var(--blush);
+  }
+
+  .s-values-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 3.5vw, 50px);
+    line-height: 1.15;
+    color: var(--cream);
+    margin-top: 14px;
+  }
+
+  .s-values-header h2 em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .s-values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    max-width: 900px;
+  }
+
+  .s-value-item {
+    padding: 40px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.25s;
+  }
+
+  .s-value-item:hover { background: rgba(255,255,255,0.10); }
+
+  .s-value-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--blush);
+    opacity: 0.6;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .s-value-item h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .s-value-item p {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: rgba(238,230,219,0.75);
+  }
+
+  .s-approach {
+    padding: 100px 60px;
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .s-approach-content h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 3.5vw, 48px);
+    color: var(--ink);
+    margin-bottom: 28px;
+    line-height: 1.15;
+  }
+
+  .s-approach-content h2 em { font-style: italic; color: var(--olive); }
+
+  .s-approach-content p {
+    font-size: 15.5px;
+    line-height: 1.9;
+    color: #4a5250;
+    margin-bottom: 20px;
+  }
+
+  .s-approach-list {
+    list-style: none;
+    margin-top: 32px;
+  }
+
+  .s-approach-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .s-approach-list li:last-child { border-bottom: none; }
+
+  .s-approach-list-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blush);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .s-approach-img {
+    height: 560px;
+    background: url('https://picsum.photos/seed/calm3/480/560') center/cover no-repeat;
+    border-radius: 4px;
+  }
+
+  .s-cta-strip {
+    background: var(--blush);
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .s-cta-strip h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(26px, 3vw, 44px);
+    color: var(--ink);
+    max-width: 520px;
+    line-height: 1.2;
+  }
+
+  .s-cta-strip h2 em { font-style: italic; }
+
+  .s-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 16px 38px;
+    border-radius: 2px;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .s-btn:hover { background: var(--olive); transform: translateY(-1px); }
+
+  .s-btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+  }
+
+  .s-btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  .s-footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 64px 60px 32px;
+  }
+
+  .s-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 28px;
+  }
+
+  .s-footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .s-footer-brand-name em { font-style: italic; color: var(--blush); }
+
+  .s-footer-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--moss);
+    max-width: 280px;
+  }
+
+  .s-footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .s-footer-col ul { list-style: none; }
+
+  .s-footer-col li {
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    color: var(--moss);
+    transition: color 0.2s;
+  }
+
+  .s-footer-col li:hover { color: var(--cream); cursor: pointer; }
+
+  .s-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--sage);
+  }
+
+  .s-disclaimer {
+    background: #1a2420;
+    padding: 20px 60px;
+    font-size: 11.5px;
+    color: var(--sage);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .s-nav { padding: 16px 24px; }
+    .s-nav-links { display: none; }
+
+    .s-page-header,
+    .s-intro,
+    .s-approach { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+
+    .s-page-header-img { height: 260px; }
+    .s-intro-img-wrap { position: static; }
+    .s-intro-img { aspect-ratio: 4/3; }
+
+    .s-cred-grid { grid-template-columns: 1fr; padding: 0 24px; }
+    .s-credentials { padding: 60px 24px; }
+    .s-values { padding: 60px 24px; }
+    .s-values-grid { grid-template-columns: 1fr; }
+
+    .s-cta-strip { padding: 60px 24px; flex-direction: column; text-align: center; }
+    .s-footer { padding: 48px 24px 24px; }
+    .s-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .s-disclaimer { padding: 16px 24px; }
+    .s-approach-img { height: 300px; }
+  }
+</style>
+</head>
+<body>
+<div class="sentari-page">
+
+  <div class="s-topbar">
+    Now accepting new clients for 2026 &nbsp;&middot;&nbsp; Online &amp; in-person sessions available
+  </div>
+
+  <nav class="s-nav">
+    <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
+    <ul class="s-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about" class="active">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/articles">Articles</a></li>
+      <li><a href="/emotion-check-in">Emotion Check-In</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact#contact-form" class="s-nav-links s-nav-cta">Book a Session</a>
+  </nav>
+
+  <section class="s-page-header">
+    <div>
+      <div class="s-page-header-label">About Dr. Amara Njoki</div>
+      <h1>A psychologist who believes <em>healing is yours to reclaim.</em></h1>
+      <p>For over a decade, I've been walking alongside individuals through some of life's most difficult terrain &mdash; and the most profound transformations.</p>
+    </div>
+    <div class="s-page-header-img" aria-label="Dr. Amara Njoki, Clinical Psychologist"></div>
+  </section>
+
+  <section class="s-intro">
+    <div class="s-intro-img-wrap">
+      <div class="s-intro-img" role="img" aria-label="Dr. Amara in her practice space"></div>
+      <p class="s-intro-caption">Nairobi, Kenya &amp; Online</p>
+    </div>
+    <div class="s-intro-content">
+      <div class="s-section-label">My Story</div>
+      <h2>Psychology isn't just my profession &mdash; it's my <em>calling.</em></h2>
+
+      <p>I came to psychology through my own experiences of loss and reinvention. Growing up, I watched people around me carry enormous pain in silence &mdash; not because they were weak, but because no one had shown them how to carry it differently. That silence lit something in me.</p>
+
+      <p>Today, I work with adults navigating anxiety, burnout, grief, relationship challenges, trauma, and the particular kind of exhaustion that comes from performing wellness while quietly unraveling. My clients come from all walks of life, and what they share is a courage that often surprises them when they discover it.</p>
+
+      <div class="s-quote">
+        <p>"The curious paradox is that when I accept myself just as I am, then I can change."</p>
+        <cite>&mdash; Carl Rogers, Founder of Person-Centered Therapy</cite>
+      </div>
+
+      <p>I trained in Nairobi and continued postgraduate studies in clinical psychology with a focus on trauma-informed care. My approach draws from Person-Centered Therapy, Cognitive Behavioral Therapy (CBT), and Acceptance &amp; Commitment Therapy (ACT) &mdash; but above everything else, I follow your lead. You are the expert on your own life.</p>
+
+      <p>When I'm not in session, you'll find me writing about the intersection of mental health and everyday African life, which is a conversation I think is long overdue. I believe that psychological wellness is not a luxury &mdash; it is infrastructure.</p>
+    </div>
+  </section>
+
+  <section class="s-credentials">
+    <div class="s-credentials-header">
+      <div class="s-section-label" style="justify-content:center;">Education &amp; Credentials</div>
+      <h2>Trained rigorously.<br>Practicing with heart.</h2>
+    </div>
+
+    <div class="s-cred-grid">
+      <div class="s-cred-card">
+        <svg class="s-cred-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="14" width="28" height="20" rx="2" stroke="#6F7B6F" stroke-width="1.5"/>
+          <path d="M13 14V11a7 7 0 0 1 14 0v3" stroke="#6F7B6F" stroke-width="1.5"/>
+          <circle cx="20" cy="22" r="3" stroke="#6F7B6F" stroke-width="1.5"/>
+          <path d="M20 25v3" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>MSc Clinical Psychology</h3>
+        <p>University of Nairobi, Department of Psychiatry &amp; Mental Health. Specialization in adult trauma and mood disorders.</p>
+        <span class="s-cred-year">Graduated 2014</span>
+      </div>
+
+      <div class="s-cred-card">
+        <svg class="s-cred-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="13" stroke="#6F7B6F" stroke-width="1.5"/>
+          <path d="M20 12v8l5 3" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Registered Clinical Psychologist</h3>
+        <p>Full member of the Kenya Psychological Association (KCPA) and registered with the Kenya Medical Practitioners &amp; Dentists Council.</p>
+        <span class="s-cred-year">Since 2015</span>
+      </div>
+
+      <div class="s-cred-card">
+        <svg class="s-cred-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 32l6-14 6 8 5-10 7 16" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Trauma-Informed Care Certification</h3>
+        <p>Advanced training in Trauma-Focused CBT (TF-CBT) and EMDR (Eye Movement Desensitization &amp; Reprocessing) for complex trauma.</p>
+        <span class="s-cred-year">Certified 2018</span>
+      </div>
+
+      <div class="s-cred-card">
+        <svg class="s-cred-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="8" width="20" height="24" rx="2" stroke="#6F7B6F" stroke-width="1.5"/>
+          <path d="M15 16h10M15 21h7" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Acceptance &amp; Commitment Therapy (ACT)</h3>
+        <p>Certificate in ACT from the Association for Contextual Behavioral Science (ACBS), applied to anxiety, depression, and chronic pain.</p>
+        <span class="s-cred-year">Certified 2020</span>
+      </div>
+
+      <div class="s-cred-card">
+        <svg class="s-cred-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 8c-6.627 0-12 5.373-12 12 0 3.74 1.713 7.086 4.4 9.32L20 32l7.6-2.68C30.287 27.086 32 23.74 32 20c0-6.627-5.373-12-12-12z" stroke="#6F7B6F" stroke-width="1.5"/>
+          <path d="M16 20l3 3 6-6" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>10+ Years Clinical Experience</h3>
+        <p>Over a decade of individual therapy, group facilitation, and psychological assessments across hospital, NGO, and private practice settings.</p>
+        <span class="s-cred-year">2014 &ndash; Present</span>
+      </div>
+
+      <div class="s-cred-card">
+        <svg class="s-cred-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 24s0-8 8-8 8 8 8 8" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="20" cy="13" r="3" stroke="#6F7B6F" stroke-width="1.5"/>
+          <path d="M8 32h24" stroke="#6F7B6F" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Psychology Writer &amp; Educator</h3>
+        <p>Published author of articles on mental wellness, emotional intelligence, and psychological safety in African professional and family contexts.</p>
+        <span class="s-cred-year">Since 2019</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-values">
+    <div class="s-values-header">
+      <div class="s-section-label">What I Stand For</div>
+      <h2>The principles that guide <em>every session.</em></h2>
+    </div>
+
+    <div class="s-values-grid">
+      <div class="s-value-item">
+        <div class="s-value-num">01</div>
+        <h3>You are not broken</h3>
+        <p>Struggling does not mean something is fundamentally wrong with you. It means you are human. My work starts from a place of radical acceptance, not pathology.</p>
+      </div>
+      <div class="s-value-item">
+        <div class="s-value-num">02</div>
+        <h3>Safety is non-negotiable</h3>
+        <p>A therapy room where you don't feel safe is just a room. Every session is held in confidence, judgment-free, and paced entirely by you.</p>
+      </div>
+      <div class="s-value-item">
+        <div class="s-value-num">03</div>
+        <h3>Culture is context</h3>
+        <p>Your identity, your family dynamics, your cultural background are not footnotes to your mental health story &mdash; they are often the whole story. I work with them, not around them.</p>
+      </div>
+      <div class="s-value-item">
+        <div class="s-value-num">04</div>
+        <h3>Change is possible, always</h3>
+        <p>Decades of neuroscience confirm what I've seen in session after session: the brain retains its capacity to change. Healing is not wishful thinking &mdash; it is documented biology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-approach">
+    <div class="s-approach-content">
+      <div class="s-section-label">How I Work</div>
+      <h2>Evidence-based therapy that <em>actually feels human.</em></h2>
+      <p>I draw from several therapeutic modalities depending on what each individual needs. There's no one-size-fits-all approach to healing &mdash; and I'm suspicious of anyone who says otherwise.</p>
+      <p>Practically, this means our work together might include exploring the thoughts and patterns that keep you stuck, processing difficult memories in a body-aware way, learning to respond rather than react to overwhelming emotions, or simply talking through a life decision with someone genuinely in your corner.</p>
+
+      <ul class="s-approach-list">
+        <li><span class="s-approach-list-dot"></span><span><strong>Person-Centered Therapy (PCT)</strong> &mdash; the foundational lens. Your autonomy, your pace, your wisdom.</span></li>
+        <li><span class="s-approach-list-dot"></span><span><strong>Cognitive Behavioral Therapy (CBT)</strong> &mdash; identifying and restructuring unhelpful thought patterns.</span></li>
+        <li><span class="s-approach-list-dot"></span><span><strong>Acceptance &amp; Commitment Therapy (ACT)</strong> &mdash; building psychological flexibility and value-driven living.</span></li>
+        <li><span class="s-approach-list-dot"></span><span><strong>Trauma-Informed Care</strong> &mdash; all sessions are held with an awareness of how trauma shapes the mind and body.</span></li>
+        <li><span class="s-approach-list-dot"></span><span><strong>Psychoeducation</strong> &mdash; understanding your mind is part of healing it. I explain as we go.</span></li>
+      </ul>
+    </div>
+    <div class="s-approach-img" role="img" aria-label="A calm, sunlit therapy space"></div>
+  </section>
+
+  <section class="s-cta-strip">
+    <h2>Ready to take the <em>first step?</em></h2>
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+      <a href="/contact#contact-form" class="s-btn">Book a Free Consultation</a>
+      <a href="/services" class="s-btn s-btn-outline">See Services</a>
+    </div>
+  </section>
+
+  <footer class="s-footer">
+    <div class="s-footer-grid">
+      <div>
+        <div class="s-footer-brand-name">Sentari<em>.</em></div>
+        <p class="s-footer-desc">A psychology practice rooted in compassion, evidence, and the belief that every person carries within them the capacity to heal.</p>
+      </div>
+      <div class="s-footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="s-footer-col">
+        <h4>Specializations</h4>
+        <ul>
+          <li>Anxiety &amp; Stress</li>
+          <li>Burnout</li>
+          <li>Trauma</li>
+          <li>Grief &amp; Loss</li>
+          <li>Relationships</li>
+          <li>Life Transitions</li>
+        </ul>
+      </div>
+      <div class="s-footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>hello@sentari.com</li>
+          <li>Nairobi, Kenya</li>
+          <li>Online sessions available</li>
+          <li style="margin-top:12px; color: #EACBC4;">Crisis line (Kenya):<br>+254 722 178 177</li>
+        </ul>
+      </div>
+    </div>
+    <div class="s-footer-bottom">
+      <span>&copy; 2026 Sentari Psychology. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/disclaimer">Disclaimer</a></span>
+    </div>
+  </footer>
+
+  <div class="s-disclaimer">
+    <strong>Important:</strong> The content on this website is for informational and educational purposes only and does not constitute professional psychological or medical advice, diagnosis, or treatment. If you are in crisis, please contact Befrienders Kenya at <strong>+254 722 178 177</strong> or go to your nearest emergency room.
+  </div>
+
+</div>
+</body>
+</html>

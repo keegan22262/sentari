@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Sentari Psychology</title>
+<meta name="description" content="Individual psychotherapy, couples therapy, trauma processing, and psychological assessments at Sentari Psychology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .sentari-page {
+    --olive:   #6F7B6F;
+    --cream:   #EEE6DB;
+    --blush:   #EACBC4;
+    --moss:    #BCB8A7;
+    --sage:    #909A97;
+    --stone:   #7B868E;
+    --ink:     #2C3530;
+    --surface: #FAF6EE;
+    --white:   #FFFFFF;
+    --border:  rgba(44,53,48,0.10);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background-color: var(--cream);
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  .sentari-page *, .sentari-page *::before, .sentari-page *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  .sentari-page a { color: inherit; text-decoration: none; }
+  .sentari-page img { display: block; width: 100%; }
+
+  .s-topbar { background: var(--olive); color: var(--cream); text-align: center; padding: 10px 20px; font-size: 13px; letter-spacing: 0.08em; }
+  .s-nav { background: var(--surface); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .s-nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); }
+  .s-nav-logo span { color: var(--olive); font-style: italic; }
+  .s-nav-links { display: flex; gap: 36px; list-style: none; font-size: 13.5px; letter-spacing: 0.06em; font-weight: 500; text-transform: uppercase; }
+  .s-nav-links a { color: var(--ink); transition: color 0.2s; }
+  .s-nav-links a:hover, .s-nav-links .active { color: var(--olive); }
+  .s-nav-cta { background: var(--olive); color: var(--surface) !important; padding: 11px 26px; border-radius: 2px; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+  .s-nav-cta:hover { background: var(--ink) !important; }
+
+  .s-section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 18px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+  .s-section-label::after { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--olive); opacity: 0.5; }
+
+  .s-btn { display: inline-block; background: var(--ink); color: var(--cream); padding: 14px 34px; border-radius: 2px; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; transition: background 0.2s, transform 0.15s; }
+  .s-btn:hover { background: var(--olive); transform: translateY(-1px); }
+  .s-btn-olive { background: var(--olive); }
+  .s-btn-olive:hover { background: var(--ink); }
+
+  .s-services-header { background: var(--cream); padding: 90px 60px 60px; max-width: 760px; }
+  .s-services-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 5vw, 64px); line-height: 1.1; color: var(--ink); margin: 16px 0 24px; }
+  .s-services-header h1 em { font-style: italic; color: var(--olive); }
+  .s-services-header p { font-size: 16.5px; line-height: 1.85; color: #5a6560; }
+
+  .s-services-intro-strip { background: var(--olive); padding: 50px 60px; display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+  .s-services-intro-strip p { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--cream); line-height: 1.6; flex: 1; min-width: 260px; }
+  .s-services-intro-strip .s-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+  .s-stat { text-align: center; }
+  .s-stat-num { font-family: 'DM Serif Display', serif; font-size: 44px; color: var(--blush); line-height: 1; }
+  .s-stat-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(238,230,219,0.7); margin-top: 6px; }
+
+  .s-services-main { padding: 80px 60px; background: var(--surface); }
+  .s-services-main-header { text-align: center; margin-bottom: 60px; }
+  .s-services-main-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 48px); color: var(--ink); margin-top: 14px; }
+  .s-services-main-header h2 em { font-style: italic; color: var(--olive); }
+
+  .s-service-card { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; margin-bottom: 32px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .s-service-card.s-reverse { direction: rtl; }
+  .s-service-card.s-reverse > * { direction: ltr; }
+  .s-service-card-img { background-size: cover; background-position: center; min-height: 320px; }
+  .s-service-card-content { padding: 52px 48px; background: var(--surface); display: flex; flex-direction: column; justify-content: center; }
+  .s-service-tag { display: inline-block; background: var(--blush); color: var(--ink); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; padding: 5px 12px; border-radius: 2px; margin-bottom: 18px; }
+  .s-service-card-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 2.5vw, 36px); color: var(--ink); line-height: 1.2; margin-bottom: 18px; }
+  .s-service-card-content h2 em { font-style: italic; color: var(--olive); }
+  .s-service-card-content p { font-size: 15px; line-height: 1.85; color: #5a6560; margin-bottom: 24px; }
+  .s-service-details { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+  .s-detail-chip { font-size: 12px; color: var(--sage); display: flex; align-items: center; gap: 6px; }
+  .s-detail-chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--moss); display: inline-block; }
+
+  .s-issues { padding: 80px 60px; background: var(--cream); }
+  .s-issues-header { margin-bottom: 52px; }
+  .s-issues-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 48px); color: var(--ink); margin-top: 14px; }
+  .s-issues-header h2 em { font-style: italic; color: var(--olive); }
+  .s-issues-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .s-issue-item { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 28px 24px; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+  .s-issue-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--blush); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+  .s-issue-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(44,53,48,0.08); }
+  .s-issue-item:hover::after { transform: scaleX(1); }
+  .s-issue-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+  .s-issue-item h3 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); margin-bottom: 8px; }
+  .s-issue-item p { font-size: 13.5px; line-height: 1.7; color: var(--sage); }
+
+  .s-process { background: var(--ink); padding: 100px 60px; color: var(--cream); }
+  .s-process-header { text-align: center; margin-bottom: 70px; }
+  .s-process-header .s-section-label { justify-content: center; color: var(--blush); }
+  .s-process-header .s-section-label::after { background: var(--blush); }
+  .s-process-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 48px); color: var(--cream); margin-top: 14px; }
+  .s-process-header h2 em { font-style: italic; color: var(--blush); }
+  .s-process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .s-process-steps::before { content: ''; position: absolute; top: 36px; left: 12%; width: 76%; height: 1px; background: rgba(255,255,255,0.15); }
+  .s-step { padding: 0 24px; text-align: center; position: relative; }
+  .s-step-num { width: 72px; height: 72px; border: 1.5px solid rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: var(--blush); background: var(--ink); position: relative; z-index: 1; }
+  .s-step h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--cream); margin-bottom: 12px; }
+  .s-step p { font-size: 14px; line-height: 1.75; color: rgba(238,230,219,0.7); }
+
+  .s-fees { padding: 80px 60px; background: var(--surface); }
+  .s-fees-header { text-align: center; margin-bottom: 52px; }
+  .s-fees-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 44px); color: var(--ink); margin-top: 14px; }
+  .s-fees-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .s-fee-card { background: var(--cream); border: 1.5px solid var(--border); border-radius: 4px; padding: 40px 32px; text-align: center; transition: border-color 0.2s; }
+  .s-fee-card.s-featured { background: var(--olive); border-color: var(--olive); color: var(--cream); transform: scale(1.03); }
+  .s-fee-card:hover { border-color: var(--olive); }
+  .s-fee-type { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--sage); margin-bottom: 16px; }
+  .s-fee-card.s-featured .s-fee-type { color: rgba(238,230,219,0.7); }
+  .s-fee-price { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--ink); line-height: 1; }
+  .s-fee-card.s-featured .s-fee-price { color: var(--cream); }
+  .s-fee-currency { font-family: 'Inter', sans-serif; font-size: 18px; vertical-align: super; font-weight: 400; }
+  .s-fee-duration { font-size: 13px; color: var(--sage); margin-top: 4px; margin-bottom: 20px; }
+  .s-fee-card.s-featured .s-fee-duration { color: rgba(238,230,219,0.7); }
+  .s-fee-features { list-style: none; font-size: 14px; color: var(--ink); line-height: 2; margin-bottom: 28px; }
+  .s-fee-card.s-featured .s-fee-features { color: var(--cream); }
+  .s-fee-note { text-align: center; font-size: 13.5px; color: var(--sage); margin-top: 32px; }
+
+  .s-faq { padding: 80px 60px; background: var(--cream); max-width: 100%; }
+  .s-faq-header { margin-bottom: 48px; }
+  .s-faq-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 40px); color: var(--ink); margin-top: 14px; }
+  .s-faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+  .s-faq-q { font-size: 16px; font-weight: 500; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .s-faq-toggle { width: 24px; height: 24px; border: 1.5px solid var(--moss); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--olive); font-size: 16px; font-weight: 300; transition: background 0.2s; }
+  .s-faq-q:hover .s-faq-toggle { background: var(--olive); color: var(--cream); border-color: var(--olive); }
+  .s-faq-a { font-size: 14.5px; line-height: 1.85; color: var(--sage); padding-top: 16px; display: none; }
+  .s-faq-item.open .s-faq-a { display: block; }
+
+  .s-cta-strip { background: var(--blush); padding: 80px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .s-cta-strip h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 44px); color: var(--ink); max-width: 520px; line-height: 1.2; }
+  .s-cta-strip h2 em { font-style: italic; }
+
+  .s-footer { background: var(--ink); color: var(--cream); padding: 64px 60px 32px; }
+  .s-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+  .s-footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.04em; }
+  .s-footer-brand-name em { font-style: italic; color: var(--blush); }
+  .s-footer-desc { font-size: 14px; line-height: 1.8; color: var(--moss); max-width: 280px; }
+  .s-footer-col h4 { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blush); margin-bottom: 18px; font-weight: 600; }
+  .s-footer-col ul { list-style: none; }
+  .s-footer-col li { margin-bottom: 10px; font-size: 13.5px; color: var(--moss); }
+  .s-footer-col li:hover { color: var(--cream); cursor: pointer; }
+  .s-footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--sage); }
+  .s-disclaimer { background: #1a2420; padding: 20px 60px; font-size: 11.5px; color: var(--sage); line-height: 1.7; text-align: center; }
+
+  @media (max-width: 960px) {
+    .s-nav { padding: 16px 24px; }
+    .s-nav-links { display: none; }
+    .s-services-header, .s-services-intro-strip, .s-services-main, .s-issues, .s-process, .s-fees, .s-cta-strip, .s-footer { padding-left: 24px; padding-right: 24px; }
+    .s-service-card { grid-template-columns: 1fr; }
+    .s-service-card.s-reverse { direction: ltr; }
+    .s-service-card-img { min-height: 240px; }
+    .s-service-card-content { padding: 36px 28px; }
+    .s-issues-grid { grid-template-columns: repeat(2, 1fr); }
+    .s-process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .s-process-steps::before { display: none; }
+    .s-fees-grid { grid-template-columns: 1fr; max-width: 380px; }
+    .s-fee-card.s-featured { transform: none; }
+    .s-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .s-disclaimer { padding: 16px 24px; }
+    .s-faq { padding: 60px 24px; }
+  }
+  @media (max-width: 540px) {
+    .s-issues-grid { grid-template-columns: 1fr; }
+    .s-process-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="sentari-page">
+
+  <div class="s-topbar">Now accepting new clients for 2026 &nbsp;&middot;&nbsp; Online &amp; in-person sessions available</div>
+
+  <nav class="s-nav">
+    <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
+    <ul class="s-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services" class="active">Services</a></li>
+      <li><a href="/articles">Articles</a></li>
+      <li><a href="/emotion-check-in">Emotion Check-In</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact#contact-form" class="s-nav-links s-nav-cta">Book a Session</a>
+  </nav>
+
+  <div class="s-services-header">
+    <div class="s-section-label">What I Offer</div>
+    <h1>Therapy that meets you <em>exactly where you are.</em></h1>
+    <p>I offer evidence-based psychological support across a range of concerns. Whether you're navigating a specific challenge or simply know something needs to shift, there's a place here for you.</p>
+  </div>
+
+  <div class="s-services-intro-strip">
+    <p>"I don't believe in rushing healing. The pace is always yours &mdash; I'm just here to make the process less lonely."</p>
+    <div class="s-stats">
+      <div class="s-stat"><div class="s-stat-num">10+</div><div class="s-stat-label">Years practicing</div></div>
+      <div class="s-stat"><div class="s-stat-num">500+</div><div class="s-stat-label">Clients supported</div></div>
+      <div class="s-stat"><div class="s-stat-num">3</div><div class="s-stat-label">Therapy modalities</div></div>
+    </div>
+  </div>
+
+  <section class="s-services-main">
+    <div class="s-services-main-header">
+      <div class="s-section-label" style="justify-content:center;">Core Services</div>
+      <h2>Each service is tailored to <em>your unique situation.</em></h2>
+    </div>
+
+    <div class="s-service-card">
+      <div class="s-service-card-img" style="background-image:url('https://picsum.photos/seed/therapy4/600/480')"></div>
+      <div class="s-service-card-content">
+        <span class="s-service-tag">Most Popular</span>
+        <h2>Individual <em>Psychotherapy</em></h2>
+        <p>One-on-one sessions focused entirely on you. We work through whatever is making daily life harder &mdash; anxiety, low mood, relationship patterns, identity questions, or that persistent sense of being stuck.</p>
+        <div class="s-service-details">
+          <span class="s-detail-chip">50-minute sessions</span>
+          <span class="s-detail-chip">Online &amp; In-person</span>
+          <span class="s-detail-chip">Weekly or bi-weekly</span>
+        </div>
+        <a href="/contact#contact-form" class="s-btn s-btn-olive">Book a Consultation</a>
+      </div>
+    </div>
+
+    <div class="s-service-card s-reverse">
+      <div class="s-service-card-img" style="background-image:url('https://picsum.photos/seed/couple2/600/480')"></div>
+      <div class="s-service-card-content">
+        <span class="s-service-tag">Relationships</span>
+        <h2>Couples &amp; <em>Relationship Therapy</em></h2>
+        <p>For partners navigating communication breakdowns, trust ruptures, transitions, or the slow drift that happens when life gets busy. Sessions are a neutral space &mdash; not to take sides, but to rebuild a shared language.</p>
+        <div class="s-service-details">
+          <span class="s-detail-chip">75-minute sessions</span>
+          <span class="s-detail-chip">Both partners present</span>
+          <span class="s-detail-chip">Online or in-person</span>
+        </div>
+        <a href="/contact#contact-form" class="s-btn s-btn-olive">Book a Consultation</a>
+      </div>
+    </div>
+
+    <div class="s-service-card">
+      <div class="s-service-card-img" style="background-image:url('https://picsum.photos/seed/healing5/600/480')"></div>
+      <div class="s-service-card-content">
+        <span class="s-service-tag">Trauma-Focused</span>
+        <h2>Trauma <em>Processing &amp; Recovery</em></h2>
+        <p>Trauma is not a character flaw &mdash; it is a nervous system response to overwhelm. Using trauma-focused CBT and EMDR, we gently work through what happened, at a pace that feels safe, to help your body and mind find rest again.</p>
+        <div class="s-service-details">
+          <span class="s-detail-chip">50&ndash;90 minutes</span>
+          <span class="s-detail-chip">Structured program</span>
+          <span class="s-detail-chip">Paced carefully</span>
+        </div>
+        <a href="/contact#contact-form" class="s-btn s-btn-olive">Book a Consultation</a>
+      </div>
+    </div>
+
+    <div class="s-service-card s-reverse">
+      <div class="s-service-card-img" style="background-image:url('https://picsum.photos/seed/assess1/600/480')"></div>
+      <div class="s-service-card-content">
+        <span class="s-service-tag">Assessment</span>
+        <h2>Psychological <em>Assessment &amp; Reports</em></h2>
+        <p>Comprehensive psychological assessments for adults and young people &mdash; including cognitive, emotional, and behavioral evaluations. Reports are suitable for educational institutions, employers, courts, or personal clarity.</p>
+        <div class="s-service-details">
+          <span class="s-detail-chip">Multi-session</span>
+          <span class="s-detail-chip">Written report included</span>
+          <span class="s-detail-chip">In-person (Nairobi)</span>
+        </div>
+        <a href="/contact#contact-form" class="s-btn s-btn-olive">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-issues">
+    <div class="s-issues-header">
+      <div class="s-section-label">Specializations</div>
+      <h2>Areas I work with <em>every day.</em></h2>
+    </div>
+    <div class="s-issues-grid">
+      <div class="s-issue-item"><span class="s-issue-icon">🌪</span><h3>Anxiety &amp; Worry</h3><p>Generalized anxiety, panic attacks, social anxiety, health anxiety, and the constant mental noise that makes rest feel impossible.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">🕯</span><h3>Grief &amp; Loss</h3><p>Bereavement, anticipatory grief, disenfranchised grief (losses others don't recognize), and the aftermath of sudden or traumatic loss.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">🔥</span><h3>Burnout &amp; Exhaustion</h3><p>Professional and emotional burnout, chronic stress, compassion fatigue &mdash; especially in high-performing environments and caregiving roles.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">🌿</span><h3>Depression &amp; Low Mood</h3><p>Clinical depression, persistent low mood, seasonal affective patterns, and the anhedonia (loss of joy) that creeps in without clear cause.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">💑</span><h3>Relationship Patterns</h3><p>Codependency, attachment wounds, people-pleasing, communication difficulties, and the cyclical patterns that keep love feeling unsafe.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">🌱</span><h3>Life Transitions</h3><p>Career changes, relocation, divorce, parenthood, emerging adulthood, retirement &mdash; transitions that bring identity into question.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">🧠</span><h3>Trauma &amp; PTSD</h3><p>Complex trauma, childhood adversity, sexual trauma, accident or medical trauma, and symptoms of PTSD including flashbacks and hypervigilance.</p></div>
+      <div class="s-issue-item"><span class="s-issue-icon">🪞</span><h3>Self-Esteem &amp; Identity</h3><p>Deep-rooted self-criticism, imposter syndrome, questions of cultural or personal identity, and learning to inhabit your own life with confidence.</p></div>
+    </div>
+  </section>
+
+  <section class="s-process">
+    <div class="s-process-header">
+      <div class="s-section-label">The Process</div>
+      <h2>What to expect when you <em>reach out.</em></h2>
+    </div>
+    <div class="s-process-steps">
+      <div class="s-step"><div class="s-step-num">1</div><h3>Free Consultation</h3><p>A 20-minute call at no cost, so we can both decide whether working together feels right. No pressure, no obligation.</p></div>
+      <div class="s-step"><div class="s-step-num">2</div><h3>Initial Assessment</h3><p>Our first full session is a detailed conversation about your history, current concerns, and goals. I listen more than I talk.</p></div>
+      <div class="s-step"><div class="s-step-num">3</div><h3>Tailored Plan</h3><p>Together we agree on a direction &mdash; how often to meet, what approach fits, and how we'll know we're making progress.</p></div>
+      <div class="s-step"><div class="s-step-num">4</div><h3>Ongoing Work</h3><p>Regular sessions, honest reflection, and the slow, meaningful work of change. We revisit the plan whenever your needs shift.</p></div>
+    </div>
+  </section>
+
+  <section class="s-fees">
+    <div class="s-fees-header">
+      <div class="s-section-label" style="justify-content:center;">Investment</div>
+      <h2>Transparent, straightforward pricing.</h2>
+    </div>
+    <div class="s-fees-grid">
+      <div class="s-fee-card">
+        <div class="s-fee-type">Initial Consultation</div>
+        <div class="s-fee-price"><span class="s-fee-currency">KSh</span>0</div>
+        <div class="s-fee-duration">20-minute call</div>
+        <ul class="s-fee-features"><li>No commitment required</li><li>Ask all your questions</li><li>Decide together</li></ul>
+        <a href="/contact#contact-form" class="s-btn" style="width:100%;text-align:center;display:block;">Book Now</a>
+      </div>
+      <div class="s-fee-card s-featured">
+        <div class="s-fee-type">Individual Session</div>
+        <div class="s-fee-price"><span class="s-fee-currency">KSh</span>6,500</div>
+        <div class="s-fee-duration">50-minute session</div>
+        <ul class="s-fee-features"><li>One-on-one therapy</li><li>Online or in-person</li><li>Session notes shared</li></ul>
+        <a href="/contact#contact-form" class="s-btn" style="width:100%;text-align:center;display:block;background:var(--cream);color:var(--ink);">Book Now</a>
+      </div>
+      <div class="s-fee-card">
+        <div class="s-fee-type">Couples Session</div>
+        <div class="s-fee-price"><span class="s-fee-currency">KSh</span>9,000</div>
+        <div class="s-fee-duration">75-minute session</div>
+        <ul class="s-fee-features"><li>Both partners included</li><li>Neutral facilitation</li><li>Online or in-person</li></ul>
+        <a href="/contact#contact-form" class="s-btn" style="width:100%;text-align:center;display:block;">Book Now</a>
+      </div>
+    </div>
+    <p class="s-fee-note">Sliding scale available for clients experiencing financial hardship &mdash; please mention this when reaching out. &nbsp;&middot;&nbsp; All prices are in Kenyan Shillings (KSh).</p>
+  </section>
+
+  <section class="s-faq">
+    <div class="s-faq-header">
+      <div class="s-section-label">FAQs</div>
+      <h2>Frequently asked questions.</h2>
+    </div>
+
+    <div class="s-faq-item">
+      <div class="s-faq-q" onclick="this.parentElement.classList.toggle('open')">How do I know if I need therapy?<span class="s-faq-toggle">+</span></div>
+      <div class="s-faq-a">If something feels persistently heavy, confusing, or out of your control &mdash; that's enough. You don't need to be in crisis to deserve support. Many people find therapy most useful when life feels "fine but not right." Trust that instinct.</div>
+    </div>
+    <div class="s-faq-item">
+      <div class="s-faq-q" onclick="this.parentElement.classList.toggle('open')">Is everything I share kept confidential?<span class="s-faq-toggle">+</span></div>
+      <div class="s-faq-a">Yes. All sessions are strictly confidential under professional ethical guidelines and Kenyan law. The only exceptions are specific situations where there is risk of serious harm to yourself or others &mdash; and I will always discuss this with you openly if such a situation arises.</div>
+    </div>
+    <div class="s-faq-item">
+      <div class="s-faq-q" onclick="this.parentElement.classList.toggle('open')">Do you offer online sessions?<span class="s-faq-toggle">+</span></div>
+      <div class="s-faq-a">Yes &mdash; online sessions are available for clients anywhere in Kenya and internationally. Sessions are conducted via a secure, encrypted video platform. Many clients find online therapy just as effective as in-person, with the added comfort of being in your own space.</div>
+    </div>
+    <div class="s-faq-item">
+      <div class="s-faq-q" onclick="this.parentElement.classList.toggle('open')">How long will I need to be in therapy?<span class="s-faq-toggle">+</span></div>
+      <div class="s-faq-a">This varies widely depending on what you're working on. Some people find meaningful relief in 8&ndash;12 focused sessions. Others choose to work together for a year or more. We'll regularly review how things are going and you always decide when you're ready to conclude.</div>
+    </div>
+    <div class="s-faq-item">
+      <div class="s-faq-q" onclick="this.parentElement.classList.toggle('open')">Do you work with insurance?<span class="s-faq-toggle">+</span></div>
+      <div class="s-faq-a">I currently work as a private-pay practice. I can provide receipts and documentation that some insurers accept for reimbursement &mdash; please check your specific policy. If cost is a barrier, reach out directly to discuss sliding-scale options.</div>
+    </div>
+  </section>
+
+  <section class="s-cta-strip">
+    <h2>You don't have to figure this out <em>alone.</em></h2>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+      <a href="/contact#contact-form" class="s-btn">Book a Free Consultation</a>
+      <a href="/about" class="s-btn" style="background:transparent;border:1.5px solid var(--ink);color:var(--ink);">Meet Dr. Amara</a>
+    </div>
+  </section>
+
+  <footer class="s-footer">
+    <div class="s-footer-grid">
+      <div>
+        <div class="s-footer-brand-name">Sentari<em>.</em></div>
+        <p class="s-footer-desc">A psychology practice rooted in compassion, evidence, and the belief that every person carries within them the capacity to heal.</p>
+      </div>
+      <div class="s-footer-col">
+        <h4>Navigation</h4>
+        <ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/articles">Articles</a></li><li><a href="/contact">Contact</a></li></ul>
+      </div>
+      <div class="s-footer-col">
+        <h4>Specializations</h4>
+        <ul><li>Anxiety &amp; Stress</li><li>Burnout</li><li>Trauma</li><li>Grief &amp; Loss</li><li>Relationships</li><li>Life Transitions</li></ul>
+      </div>
+      <div class="s-footer-col">
+        <h4>Contact</h4>
+        <ul><li>hello@sentari.com</li><li>Nairobi, Kenya</li><li>Online sessions available</li><li style="margin-top:12px;color:#EACBC4;">Crisis line (Kenya):<br>+254 722 178 177</li></ul>
+      </div>
+    </div>
+    <div class="s-footer-bottom">
+      <span>&copy; 2026 Sentari Psychology. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/disclaimer">Disclaimer</a></span>
+    </div>
+  </footer>
+
+  <div class="s-disclaimer">
+    <strong>Important:</strong> The content on this website is for informational and educational purposes only and does not constitute professional psychological or medical advice, diagnosis, or treatment. If you are in crisis, please contact Befrienders Kenya at <strong>+254 722 178 177</strong> or go to your nearest emergency room.
+  </div>
+
+</div>
+</body>
+</html>

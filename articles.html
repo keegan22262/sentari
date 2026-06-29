@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articles | Sentari Psychology</title>
+<meta name="description" content="Articles on anxiety, burnout, relationships, trauma, and mental wellness from Sentari Psychology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .sentari-page {
+    --olive: #6F7B6F; --cream: #EEE6DB; --blush: #EACBC4; --moss: #BCB8A7; --sage: #909A97;
+    --stone: #7B868E; --ink: #2C3530; --surface: #FAF6EE; --border: rgba(44,53,48,0.10);
+    font-family: 'Inter', sans-serif; color: var(--ink); background-color: var(--cream);
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  .sentari-page *, .sentari-page *::before, .sentari-page *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  .sentari-page a { color: inherit; text-decoration: none; }
+  .sentari-page img { display: block; width: 100%; }
+
+  .s-topbar { background: var(--olive); color: var(--cream); text-align: center; padding: 10px 20px; font-size: 13px; letter-spacing: 0.08em; }
+  .s-nav { background: var(--surface); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .s-nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); }
+  .s-nav-logo span { color: var(--olive); font-style: italic; }
+  .s-nav-links { display: flex; gap: 36px; list-style: none; font-size: 13.5px; letter-spacing: 0.06em; font-weight: 500; text-transform: uppercase; }
+  .s-nav-links a { color: var(--ink); transition: color 0.2s; }
+  .s-nav-links a:hover, .s-nav-links .active { color: var(--olive); }
+  .s-nav-cta { background: var(--olive); color: var(--surface) !important; padding: 11px 26px; border-radius: 2px; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+  .s-nav-cta:hover { background: var(--ink) !important; }
+
+  .s-section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 18px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+  .s-section-label::after { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--olive); opacity: 0.5; }
+
+  .s-articles-header { padding: 80px 60px 60px; background: var(--ink); color: var(--cream); display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: end; }
+  .s-articles-header .s-section-label { color: var(--blush); }
+  .s-articles-header .s-section-label::after { background: var(--blush); }
+  .s-articles-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 5vw, 64px); line-height: 1.1; color: var(--cream); margin: 16px 0 20px; }
+  .s-articles-header h1 em { font-style: italic; color: var(--blush); }
+  .s-articles-header p { font-size: 15px; line-height: 1.8; color: var(--moss); }
+  .s-articles-header-right p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; line-height: 1.6; color: rgba(238,230,219,0.8); border-left: 2px solid var(--blush); padding-left: 22px; }
+
+  .s-filter-bar { background: var(--surface); padding: 20px 60px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .s-filter-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-right: 4px; font-weight: 500; }
+  .s-filter-btn { padding: 7px 18px; border-radius: 2px; font-size: 12.5px; letter-spacing: 0.04em; border: 1.5px solid var(--border); background: transparent; color: var(--ink); cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+  .s-filter-btn:hover, .s-filter-btn.active { background: var(--olive); border-color: var(--olive); color: var(--surface); }
+
+  .s-articles-featured { padding: 64px 60px; background: var(--cream); }
+  .s-featured-card { display: grid; grid-template-columns: 1.3fr 1fr; background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); min-height: 460px; }
+  .s-featured-img { background: url('https://picsum.photos/seed/article_feat/700/500') center/cover no-repeat; position: relative; }
+  .s-featured-img-badge { position: absolute; top: 20px; left: 20px; background: var(--blush); color: var(--ink); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; padding: 5px 12px; border-radius: 2px; }
+  .s-featured-content { padding: 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .s-article-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+  .s-article-cat { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--olive); }
+  .s-article-date, .s-article-read { font-size: 12.5px; color: var(--sage); }
+  .s-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--moss); display: inline-block; }
+  .s-featured-content h2 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 2.5vw, 36px); color: var(--ink); line-height: 1.2; margin-bottom: 18px; }
+  .s-featured-content h2 em { font-style: italic; color: var(--olive); }
+  .s-featured-content p { font-size: 15px; line-height: 1.8; color: #5a6560; margin-bottom: 28px; }
+  .s-read-link { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--olive); transition: gap 0.2s; }
+  .s-read-link:hover { gap: 16px; }
+  .s-read-link::after { content: '→'; }
+
+  .s-articles-grid-section { padding: 32px 60px 80px; background: var(--cream); }
+  .s-articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .s-article-card { background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+  .s-article-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,53,48,0.08); }
+  .s-card-img { height: 200px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+  .s-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(44,53,48,0.25)); }
+  .s-card-cat-badge { position: absolute; bottom: 14px; left: 16px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--cream); z-index: 1; background: rgba(44,53,48,0.6); padding: 4px 10px; border-radius: 2px; }
+  .s-card-content { padding: 28px 26px; flex: 1; display: flex; flex-direction: column; }
+  .s-card-meta { display: flex; gap: 10px; margin-bottom: 12px; font-size: 11.5px; color: var(--sage); flex-wrap: wrap; align-items: center; }
+  .s-card-content h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); line-height: 1.25; margin-bottom: 12px; }
+  .s-card-content p { font-size: 13.5px; line-height: 1.75; color: var(--sage); flex: 1; margin-bottom: 20px; }
+  .s-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border); margin-top: auto; }
+  .s-card-author { font-size: 12.5px; color: var(--moss); font-weight: 500; }
+  .s-card-arrow { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--olive); font-size: 14px; transition: background 0.2s, border-color 0.2s; }
+  .s-article-card:hover .s-card-arrow { background: var(--olive); border-color: var(--olive); color: var(--cream); }
+
+  .s-newsletter { background: var(--olive); padding: 80px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .s-newsletter h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 46px); color: var(--cream); line-height: 1.15; }
+  .s-newsletter h2 em { font-style: italic; color: var(--blush); }
+  .s-newsletter p { font-size: 15px; line-height: 1.8; color: rgba(238,230,219,0.75); margin-top: 16px; }
+  .s-newsletter-form { display: flex; flex-direction: column; gap: 14px; }
+  .s-newsletter-form input { padding: 16px 20px; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 2px; background: rgba(255,255,255,0.08); color: var(--cream); font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+  .s-newsletter-form input::placeholder { color: rgba(238,230,219,0.5); }
+  .s-newsletter-form input:focus { border-color: var(--blush); }
+  .s-newsletter-form button { padding: 16px 28px; background: var(--blush); color: var(--ink); border: none; border-radius: 2px; font-size: 12.5px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+  .s-newsletter-form button:hover { background: var(--cream); }
+  .s-newsletter-note { font-size: 11.5px; color: rgba(238,230,219,0.5); margin-top: 8px; }
+
+  .s-topics { padding: 80px 60px; background: var(--surface); }
+  .s-topics-header { text-align: center; margin-bottom: 48px; }
+  .s-topics-header h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 40px); color: var(--ink); margin-top: 14px; }
+  .s-topics-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 800px; margin: 0 auto; }
+  .s-topic-pill { padding: 10px 22px; border: 1.5px solid var(--border); border-radius: 100px; font-size: 13.5px; color: var(--ink); transition: all 0.2s; cursor: pointer; }
+  .s-topic-pill:hover { background: var(--olive); border-color: var(--olive); color: var(--cream); }
+
+  .s-footer { background: var(--ink); color: var(--cream); padding: 64px 60px 32px; }
+  .s-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+  .s-footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.04em; }
+  .s-footer-brand-name em { font-style: italic; color: var(--blush); }
+  .s-footer-desc { font-size: 14px; line-height: 1.8; color: var(--moss); max-width: 280px; }
+  .s-footer-col h4 { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blush); margin-bottom: 18px; font-weight: 600; }
+  .s-footer-col ul { list-style: none; }
+  .s-footer-col li { margin-bottom: 10px; font-size: 13.5px; color: var(--moss); }
+  .s-footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--sage); }
+  .s-disclaimer { background: #1a2420; padding: 20px 60px; font-size: 11.5px; color: var(--sage); line-height: 1.7; text-align: center; }
+
+  @media (max-width: 960px) {
+    .s-nav { padding: 16px 24px; } .s-nav-links { display: none; }
+    .s-articles-header, .s-articles-featured, .s-articles-grid-section, .s-newsletter, .s-topics, .s-footer { padding-left: 24px; padding-right: 24px; }
+    .s-articles-header { grid-template-columns: 1fr; gap: 32px; }
+    .s-featured-card { grid-template-columns: 1fr; }
+    .s-featured-img { min-height: 240px; }
+    .s-featured-content { padding: 36px 28px; }
+    .s-articles-grid { grid-template-columns: repeat(2, 1fr); }
+    .s-newsletter { grid-template-columns: 1fr; gap: 36px; }
+    .s-filter-bar { padding: 16px 24px; }
+    .s-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .s-disclaimer { padding: 16px 24px; }
+  }
+  @media (max-width: 600px) { .s-articles-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="sentari-page">
+
+  <div class="s-topbar">Now accepting new clients for 2026 &nbsp;&middot;&nbsp; Online &amp; in-person sessions available</div>
+
+  <nav class="s-nav">
+    <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
+    <ul class="s-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/articles" class="active">Articles</a></li>
+      <li><a href="/emotion-check-in">Emotion Check-In</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact#contact-form" class="s-nav-links s-nav-cta">Book a Session</a>
+  </nav>
+
+  <div class="s-articles-header">
+    <div>
+      <div class="s-section-label">Psychology Articles</div>
+      <h1>Thoughts on the mind, <em>honestly written.</em></h1>
+      <p>A growing library of articles on anxiety, burnout, relationships, identity, and the quiet work of building a life that feels like yours. Written from the consulting room, for real people.</p>
+    </div>
+    <div class="s-articles-header-right">
+      <p>"The goal of therapy is not to fix what's broken. It's to learn to live more fully with what simply is."</p>
+    </div>
+  </div>
+
+  <div class="s-filter-bar">
+    <span class="s-filter-label">Browse by:</span>
+    <button class="s-filter-btn active" onclick="filterArticles('all', this)">All Topics</button>
+    <button class="s-filter-btn" onclick="filterArticles('anxiety', this)">Anxiety</button>
+    <button class="s-filter-btn" onclick="filterArticles('burnout', this)">Burnout</button>
+    <button class="s-filter-btn" onclick="filterArticles('relationships', this)">Relationships</button>
+    <button class="s-filter-btn" onclick="filterArticles('trauma', this)">Trauma</button>
+    <button class="s-filter-btn" onclick="filterArticles('selfcare', this)">Self-Care</button>
+    <button class="s-filter-btn" onclick="filterArticles('identity', this)">Identity</button>
+  </div>
+
+  <section class="s-articles-featured">
+    <div class="s-featured-card">
+      <div class="s-featured-img"><span class="s-featured-img-badge">Featured Article</span></div>
+      <div class="s-featured-content">
+        <div class="s-article-meta">
+          <span class="s-article-cat">Burnout</span><span class="s-meta-dot"></span>
+          <span class="s-article-date">May 12, 2026</span><span class="s-meta-dot"></span>
+          <span class="s-article-read">8 min read</span>
+        </div>
+        <h2>Why "Just Push Through It" Is the Worst Advice for <em>Burnout Recovery</em></h2>
+        <p>The most damaging myth about burnout is that it responds to willpower. Here's what the research actually says, and what sustainable recovery looks like in a culture that celebrates grinding.</p>
+        <a href="/articles" class="s-read-link">Read Article</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-articles-grid-section">
+    <div class="s-articles-grid" id="articlesGrid">
+
+      <article class="s-article-card" data-category="anxiety">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_anx/400/220')"><span class="s-card-cat-badge">Anxiety</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>April 28, 2026</span><span class="s-meta-dot"></span><span>6 min read</span></div>
+          <h3>The Anxious Brain: Why Worrying Feels Like Productivity</h3>
+          <p>Anxiety hijacks the brain's problem-solving networks and convinces us that ruminating is the same as planning. It isn't. Here's how to tell the difference.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="relationships">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_rel/400/220')"><span class="s-card-cat-badge">Relationships</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>April 14, 2026</span><span class="s-meta-dot"></span><span>7 min read</span></div>
+          <h3>Attachment Styles in African Families: What Nobody Taught Us</h3>
+          <p>Attachment theory was built on Western family structures. Here's how it applies, and where it falls short, in the context of extended family, collectivist culture, and traditional parenting.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="selfcare">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_sc/400/220')"><span class="s-card-cat-badge">Self-Care</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>March 30, 2026</span><span class="s-meta-dot"></span><span>5 min read</span></div>
+          <h3>Rest Is Not Laziness: Reclaiming Sleep in a Hustle Culture</h3>
+          <p>Sleep deprivation is being sold as ambition. What the research on sleep and mental health actually says, and why protecting your rest is one of the highest-leverage things you can do.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="trauma">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_trm/400/220')"><span class="s-card-cat-badge">Trauma</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>March 15, 2026</span><span class="s-meta-dot"></span><span>9 min read</span></div>
+          <h3>Small 't' Trauma: The Wounds We Don't Have a Word For</h3>
+          <p>Big-T trauma gets all the attention. But the quiet, cumulative injuries of chronic criticism, emotional neglect, and relentless uncertainty shape us just as profoundly.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="identity">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_id/400/220')"><span class="s-card-cat-badge">Identity</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>February 28, 2026</span><span class="s-meta-dot"></span><span>7 min read</span></div>
+          <h3>Who Were You Before You Were "Successful"?</h3>
+          <p>When identity becomes tangled with achievement, losing a job or failing a goal can feel like losing a self. On separating who you are from what you do.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="anxiety">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_anx2/400/220')"><span class="s-card-cat-badge">Anxiety</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>February 10, 2026</span><span class="s-meta-dot"></span><span>5 min read</span></div>
+          <h3>Doomscrolling and Your Nervous System: What's Actually Happening</h3>
+          <p>The neuroscience of why bad news is addictive, what it's doing to your baseline anxiety levels, and practical ways to protect your mental ecosystem in a 24/7 news cycle.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="burnout">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_bn/400/220')"><span class="s-card-cat-badge">Burnout</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>January 22, 2026</span><span class="s-meta-dot"></span><span>8 min read</span></div>
+          <h3>The 3 Stages of Burnout (and Which One You're Actually In)</h3>
+          <p>Burnout isn't a single event &mdash; it's a progression. Understanding where you are in the cycle changes what recovery actually looks like. A clinician's breakdown.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="relationships">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_rel2/400/220')"><span class="s-card-cat-badge">Relationships</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>January 8, 2026</span><span class="s-meta-dot"></span><span>6 min read</span></div>
+          <h3>When "I'm Fine" Is a Lie We Tell to Keep the Peace</h3>
+          <p>Emotional suppression as a survival skill in relationships, and what happens over years when we consistently prioritize harmony over honesty.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+      <article class="s-article-card" data-category="selfcare">
+        <div class="s-card-img" style="background-image:url('https://picsum.photos/seed/art_sc2/400/220')"><span class="s-card-cat-badge">Self-Care</span></div>
+        <div class="s-card-content">
+          <div class="s-card-meta"><span>December 14, 2025</span><span class="s-meta-dot"></span><span>4 min read</span></div>
+          <h3>The Psychology of Journaling: Why Writing Works</h3>
+          <p>Expressive writing isn't just therapeutic folklore &mdash; it's a well-researched intervention. What happens in the brain when you put difficult experiences into words.</p>
+          <div class="s-card-footer"><span class="s-card-author">Dr. Amara Njoki</span><div class="s-card-arrow">→</div></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="s-newsletter">
+    <div>
+      <div class="s-section-label" style="color:var(--blush);">Stay Connected</div>
+      <h2>New articles on <em>mental wellness</em> every two weeks.</h2>
+      <p>No spam. No selling. Just thoughtful writing on the psychology of everyday life, delivered directly to your inbox.</p>
+    </div>
+    <div>
+      <form class="s-newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe to Articles</button>
+      </form>
+      <p class="s-newsletter-note">Unsubscribe at any time. Your information is never shared.</p>
+    </div>
+  </section>
+
+  <section class="s-topics">
+    <div class="s-topics-header">
+      <div class="s-section-label" style="justify-content:center;">Browse Topics</div>
+      <h2>Explore by theme.</h2>
+    </div>
+    <div class="s-topics-grid">
+      <span class="s-topic-pill">Anxiety &amp; Worry</span><span class="s-topic-pill">Burnout &amp; Exhaustion</span>
+      <span class="s-topic-pill">Relationships</span><span class="s-topic-pill">Trauma &amp; Recovery</span>
+      <span class="s-topic-pill">Grief &amp; Loss</span><span class="s-topic-pill">Self-Esteem</span>
+      <span class="s-topic-pill">Identity &amp; Purpose</span><span class="s-topic-pill">Parenting</span>
+      <span class="s-topic-pill">Sleep &amp; Rest</span><span class="s-topic-pill">Work &amp; Ambition</span>
+      <span class="s-topic-pill">African Mental Health</span><span class="s-topic-pill">CBT Tools</span>
+      <span class="s-topic-pill">Mindfulness</span><span class="s-topic-pill">Emotional Intelligence</span>
+    </div>
+  </section>
+
+  <footer class="s-footer">
+    <div class="s-footer-grid">
+      <div>
+        <div class="s-footer-brand-name">Sentari<em>.</em></div>
+        <p class="s-footer-desc">A psychology practice rooted in compassion, evidence, and the belief that every person carries within them the capacity to heal.</p>
+      </div>
+      <div class="s-footer-col"><h4>Navigation</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/articles">Articles</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="s-footer-col"><h4>Specializations</h4><ul><li>Anxiety &amp; Stress</li><li>Burnout</li><li>Trauma</li><li>Grief &amp; Loss</li><li>Relationships</li><li>Life Transitions</li></ul></div>
+      <div class="s-footer-col"><h4>Contact</h4><ul><li>hello@sentari.com</li><li>Nairobi, Kenya</li><li>Online sessions available</li><li style="margin-top:12px;color:#EACBC4;">Crisis line (Kenya):<br>+254 722 178 177</li></ul></div>
+    </div>
+    <div class="s-footer-bottom">
+      <span>&copy; 2026 Sentari Psychology. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/disclaimer">Disclaimer</a></span>
+    </div>
+  </footer>
+
+  <div class="s-disclaimer">
+    <strong>Important:</strong> The content on this website is for informational and educational purposes only and does not constitute professional psychological or medical advice, diagnosis, or treatment. If you are in crisis, please contact Befrienders Kenya at <strong>+254 722 178 177</strong> or go to your nearest emergency room.
+  </div>
+
+</div>
+
+<script>
+  function filterArticles(cat, btn) {
+    document.querySelectorAll('.s-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.s-article-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'flex' : 'none';
+    });
+  }
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Thank you! ✓';
+    btn.style.background = '#6F7B6F';
+    btn.style.color = '#FAF6EE';
+    e.target.reset();
+    setTimeout(() => { btn.textContent = 'Subscribe to Articles'; btn.style.background = ''; btn.style.color = ''; }, 3000);
+  }
+</script>
+</body>
+</html>
