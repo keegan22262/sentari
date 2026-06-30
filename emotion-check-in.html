@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emotion Check-In | Sentari Psychology</title>
+<meta name="description" content="A free, private emotional check-in tool — write how you feel or take a 5-question mood assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .sentari-page {
+    --olive: #6F7B6F; --cream: #EEE6DB; --blush: #EACBC4; --moss: #BCB8A7; --sage: #909A97;
+    --stone: #7B868E; --ink: #2C3530; --surface: #FAF6EE; --border: rgba(44,53,48,0.10);
+    font-family: 'Inter', sans-serif; color: var(--ink); background-color: var(--cream);
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  .sentari-page *, .sentari-page *::before, .sentari-page *::after { box-sizing: inherit; margin: 0; padding: 0; }
+  .sentari-page a { color: inherit; text-decoration: none; }
+
+  .s-topbar { background: var(--olive); color: var(--cream); text-align: center; padding: 10px 20px; font-size: 13px; letter-spacing: 0.08em; }
+  .s-nav { background: var(--surface); padding: 18px 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .s-nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); }
+  .s-nav-logo span { color: var(--olive); font-style: italic; }
+  .s-nav-links { display: flex; gap: 36px; list-style: none; font-size: 13.5px; letter-spacing: 0.06em; font-weight: 500; text-transform: uppercase; }
+  .s-nav-links a { color: var(--ink); transition: color 0.2s; }
+  .s-nav-links a:hover, .s-nav-links .active { color: var(--olive); }
+  .s-nav-cta { background: var(--olive); color: var(--surface) !important; padding: 11px 26px; border-radius: 2px; font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+  .s-nav-cta:hover { background: var(--ink) !important; }
+
+  .s-section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 18px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+  .s-section-label::after { content: ''; display: inline-block; width: 40px; height: 1px; background: var(--olive); opacity: 0.5; }
+
+  .s-emotion-header { background: var(--ink); padding: 80px 60px; text-align: center; color: var(--cream); }
+  .s-emotion-header .s-section-label { justify-content: center; color: var(--blush); }
+  .s-emotion-header .s-section-label::after { background: var(--blush); }
+  .s-emotion-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 64px); color: var(--cream); line-height: 1.1; margin: 16px 0 22px; }
+  .s-emotion-header h1 em { font-style: italic; color: var(--blush); }
+  .s-emotion-header p { font-size: 16px; line-height: 1.8; color: var(--moss); max-width: 600px; margin: 0 auto; }
+
+  .s-tool-disclaimer { background: var(--blush); padding: 16px 60px; text-align: center; font-size: 13px; color: var(--ink); line-height: 1.6; }
+  .s-tool-disclaimer strong { font-weight: 600; }
+
+  .s-tool-tabs { background: var(--surface); padding: 0 60px; border-bottom: 1px solid var(--border); display: flex; gap: 0; }
+  .s-tab-btn { padding: 20px 32px; font-size: 13.5px; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.04em; color: var(--sage); border: none; background: none; cursor: pointer; border-bottom: 2.5px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .s-tab-btn.active { color: var(--olive); border-bottom-color: var(--olive); }
+  .s-tab-btn:hover { color: var(--ink); }
+
+  .s-tool-section { display: none; padding: 60px; background: var(--cream); }
+  .s-tool-section.active { display: block; }
+
+  .s-text-tool { max-width: 740px; margin: 0 auto; }
+  .s-text-tool h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 40px); color: var(--ink); margin-bottom: 10px; }
+  .s-text-tool h2 em { font-style: italic; color: var(--olive); }
+  .s-text-tool > p { font-size: 15px; line-height: 1.8; color: var(--sage); margin-bottom: 28px; }
+
+  .s-textarea-wrap { position: relative; margin-bottom: 20px; }
+  .s-emotion-textarea { width: 100%; min-height: 160px; padding: 22px 24px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--surface); font-family: 'Inter', sans-serif; font-size: 15.5px; line-height: 1.8; color: var(--ink); resize: vertical; outline: none; transition: border-color 0.2s; }
+  .s-emotion-textarea:focus { border-color: var(--olive); }
+  .s-emotion-textarea::placeholder { color: var(--moss); }
+  .s-char-count { position: absolute; bottom: 14px; right: 18px; font-size: 11.5px; color: var(--moss); }
+
+  .s-submit-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .s-analyze-btn { background: var(--olive); color: var(--surface); border: none; padding: 16px 36px; border-radius: 2px; font-size: 13px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 10px; }
+  .s-analyze-btn:hover:not(:disabled) { background: var(--ink); }
+  .s-analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .s-analyze-note { font-size: 12.5px; color: var(--sage); }
+
+  .s-loading { display: none; align-items: center; gap: 14px; padding: 24px; background: var(--surface); border-radius: 4px; margin-top: 24px; border: 1px solid var(--border); }
+  .s-loading.show { display: flex; }
+  .s-spinner { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--olive); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .s-loading p { font-size: 14px; color: var(--sage); font-style: italic; }
+
+  .s-result { display: none; margin-top: 28px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--surface); }
+  .s-result.show { display: block; }
+  .s-result-header { background: var(--olive); padding: 20px 28px; display: flex; align-items: center; gap: 14px; }
+  .s-result-header h3 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--cream); }
+  .s-result-header h3 em { font-style: italic; color: var(--blush); }
+  .s-result-body { padding: 32px 28px; }
+  .s-emotion-bars { margin-bottom: 28px; }
+  .s-emotion-bar-item { margin-bottom: 16px; }
+  .s-bar-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 7px; }
+  .s-bar-track { height: 8px; background: var(--cream); border-radius: 100px; overflow: hidden; }
+  .s-bar-fill { height: 100%; border-radius: 100px; background: var(--olive); transition: width 1s cubic-bezier(0.25, 1, 0.5, 1); width: 0%; }
+  .s-bar-fill.blush { background: var(--blush); }
+  .s-bar-fill.stone { background: var(--stone); }
+  .s-bar-fill.moss { background: var(--moss); }
+
+  .s-result-reflection { background: var(--cream); border-radius: 4px; padding: 24px 22px; margin-bottom: 24px; }
+  .s-result-reflection-label { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--olive); margin-bottom: 12px; }
+  .s-result-reflection p { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-style: italic; line-height: 1.65; color: var(--ink); }
+
+  .s-result-suggestions h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage); margin-bottom: 14px; }
+  .s-suggestion-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+  .s-chip { padding: 8px 16px; border-radius: 100px; background: var(--cream); border: 1.5px solid var(--border); font-size: 13px; color: var(--ink); cursor: pointer; transition: all 0.2s; }
+  .s-chip:hover { background: var(--olive); border-color: var(--olive); color: var(--surface); }
+
+  .s-result-cta { padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .s-result-cta p { font-size: 13.5px; color: var(--sage); }
+  .s-btn-small { display: inline-block; background: var(--olive); color: var(--surface); padding: 11px 24px; border-radius: 2px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: background 0.2s; }
+  .s-btn-small:hover { background: var(--ink); }
+
+  .s-quiz-tool { max-width: 680px; margin: 0 auto; }
+  .s-quiz-tool h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 40px); color: var(--ink); margin-bottom: 10px; }
+  .s-quiz-tool h2 em { font-style: italic; color: var(--olive); }
+  .s-quiz-tool > p { font-size: 15px; line-height: 1.8; color: var(--sage); margin-bottom: 36px; }
+
+  .s-quiz-progress { display: flex; gap: 6px; margin-bottom: 36px; }
+  .s-progress-dot { height: 4px; flex: 1; background: var(--border); border-radius: 100px; transition: background 0.3s; }
+  .s-progress-dot.done { background: var(--olive); }
+  .s-progress-dot.current { background: var(--blush); }
+
+  .s-quiz-question { display: none; }
+  .s-quiz-question.active { display: block; }
+  .s-quiz-q-num { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; font-weight: 600; }
+  .s-quiz-q-text { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 2.5vw, 30px); color: var(--ink); line-height: 1.25; margin-bottom: 28px; }
+  .s-quiz-options { display: flex; flex-direction: column; gap: 12px; }
+  .s-quiz-option { padding: 16px 22px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--surface); font-size: 15px; color: var(--ink); cursor: pointer; transition: all 0.2s; text-align: left; font-family: 'Inter', sans-serif; }
+  .s-quiz-option:hover { border-color: var(--olive); background: rgba(111,123,111,0.06); }
+  .s-quiz-option.selected { border-color: var(--olive); background: var(--olive); color: var(--surface); }
+
+  .s-quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+  .s-quiz-nav-btn { padding: 12px 28px; border-radius: 2px; font-size: 13px; font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s; border: 1.5px solid var(--border); background: transparent; color: var(--sage); }
+  .s-quiz-nav-btn.primary { background: var(--olive); color: var(--surface); border-color: var(--olive); }
+  .s-quiz-nav-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .s-quiz-nav-btn.primary:hover { background: var(--ink); border-color: var(--ink); }
+  .s-quiz-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .s-quiz-result { display: none; }
+  .s-quiz-result.show { display: block; }
+  .s-quiz-result-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .s-quiz-result-header { padding: 36px 36px 28px; background: linear-gradient(135deg, var(--olive), #4a5a4a); color: var(--cream); }
+  .s-quiz-result-label { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blush); margin-bottom: 10px; font-weight: 600; }
+  .s-quiz-result-state { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 48px); color: var(--cream); line-height: 1.1; margin-bottom: 14px; }
+  .s-quiz-result-state em { font-style: italic; color: var(--blush); }
+  .s-quiz-result-header p { font-size: 15px; line-height: 1.75; color: rgba(238,230,219,0.8); }
+  .s-quiz-result-body { padding: 36px; }
+  .s-quiz-result-body h4 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); margin-bottom: 16px; }
+  .s-quiz-result-body p { font-size: 15px; line-height: 1.85; color: var(--sage); margin-bottom: 20px; }
+  .s-quiz-suggestions-list { list-style: none; margin-bottom: 28px; }
+  .s-quiz-suggestions-list li { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; color: var(--ink); display: flex; gap: 14px; align-items: flex-start; }
+  .s-quiz-suggestions-list li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--blush); margin-top: 7px; flex-shrink: 0; }
+  .s-quiz-restart-btn { background: none; border: 1.5px solid var(--border); padding: 12px 24px; border-radius: 2px; font-size: 13px; font-family: 'Inter', sans-serif; cursor: pointer; color: var(--sage); transition: all 0.2s; margin-right: 12px; }
+  .s-quiz-restart-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+  .s-footer { background: var(--ink); color: var(--cream); padding: 64px 60px 32px; }
+  .s-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+  .s-footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.04em; }
+  .s-footer-brand-name em { font-style: italic; color: var(--blush); }
+  .s-footer-desc { font-size: 14px; line-height: 1.8; color: var(--moss); max-width: 280px; }
+  .s-footer-col h4 { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blush); margin-bottom: 18px; font-weight: 600; }
+  .s-footer-col ul { list-style: none; }
+  .s-footer-col li { margin-bottom: 10px; font-size: 13.5px; color: var(--moss); }
+  .s-footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--sage); }
+  .s-disclaimer { background: #1a2420; padding: 20px 60px; font-size: 11.5px; color: var(--sage); line-height: 1.7; text-align: center; }
+
+  @media (max-width: 900px) {
+    .s-nav { padding: 16px 24px; } .s-nav-links { display: none; }
+    .s-tool-section { padding: 40px 24px; }
+    .s-tool-tabs { padding: 0 24px; overflow-x: auto; }
+    .s-tab-btn { padding: 16px 20px; white-space: nowrap; }
+    .s-emotion-header { padding: 60px 24px; }
+    .s-tool-disclaimer { padding: 14px 24px; }
+    .s-footer { padding: 48px 24px 24px; }
+    .s-footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .s-disclaimer { padding: 16px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="sentari-page">
+
+  <div class="s-topbar">Now accepting new clients for 2026 &nbsp;&middot;&nbsp; Online &amp; in-person sessions available</div>
+
+  <nav class="s-nav">
+    <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
+    <ul class="s-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/articles">Articles</a></li>
+      <li><a href="/emotion-check-in" class="active">Emotion Check-In</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a href="/contact#contact-form" class="s-nav-links s-nav-cta">Book a Session</a>
+  </nav>
+
+  <div class="s-emotion-header">
+    <div class="s-section-label">Free Tool</div>
+    <h1>How are you <em>really</em> feeling?</h1>
+    <p>A gentle, private space to name your emotions. Use our text reflection tool or take the 5-question mood assessment &mdash; no sign-up required.</p>
+  </div>
+
+  <div class="s-tool-disclaimer">
+    <strong>Please note:</strong> This tool is for personal reflection only. It is not a clinical assessment and not a substitute for professional support. If you are in crisis, call Befrienders Kenya: <strong>+254 722 178 177</strong>.
+  </div>
+
+  <div class="s-tool-tabs">
+    <button class="s-tab-btn active" onclick="switchTab('text', this)">✍ Write how you feel</button>
+    <button class="s-tab-btn" onclick="switchTab('quiz', this)">📋 5-Question Check-In</button>
+  </div>
+
+  <div id="tab-text" class="s-tool-section active">
+    <div class="s-text-tool">
+      <h2>Write what's <em>on your mind.</em></h2>
+      <p>Type freely &mdash; describe how you've been feeling lately, what happened today, or whatever is on your mind. Our tool will gently reflect your emotional state back to you.</p>
+
+      <div class="s-textarea-wrap">
+        <textarea class="s-emotion-textarea" id="emotionText" placeholder="Today I've been feeling... / Something that's been weighing on me is... / I noticed that lately I..." maxlength="1000" oninput="updateCharCount(this)"></textarea>
+        <span class="s-char-count" id="charCount">0 / 1000</span>
+      </div>
+
+      <div class="s-submit-row">
+        <button class="s-analyze-btn" id="analyzeBtn" onclick="analyzeEmotion()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          Reflect My Emotions
+        </button>
+        <span class="s-analyze-note">Private &amp; not stored anywhere</span>
+      </div>
+
+      <div class="s-loading" id="loadingState">
+        <div class="s-spinner"></div>
+        <p>Reading between the lines…</p>
+      </div>
+
+      <div class="s-result" id="resultBox">
+        <div class="s-result-header"><h3>Your <em>Emotional Reflection</em></h3></div>
+        <div class="s-result-body">
+          <div class="s-emotion-bars" id="emotionBars"></div>
+          <div class="s-result-reflection">
+            <div class="s-result-reflection-label">Gentle Reflection</div>
+            <p id="reflectionText"></p>
+          </div>
+          <div class="s-result-suggestions">
+            <h4>Suggested next steps</h4>
+            <div class="s-suggestion-chips" id="suggestionChips"></div>
+          </div>
+          <div class="s-result-cta">
+            <p>Would it help to talk to someone about this?</p>
+            <a href="/contact#contact-form" class="s-btn-small">Book a Free Consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-quiz" class="s-tool-section">
+    <div class="s-quiz-tool">
+      <h2>A quick <em>emotional check-in.</em></h2>
+      <p>Five straightforward questions to help you understand where you're sitting emotionally right now. Takes about 2 minutes.</p>
+
+      <div class="s-quiz-progress" id="quizProgress">
+        <div class="s-progress-dot current" id="dot0"></div>
+        <div class="s-progress-dot" id="dot1"></div>
+        <div class="s-progress-dot" id="dot2"></div>
+        <div class="s-progress-dot" id="dot3"></div>
+        <div class="s-progress-dot" id="dot4"></div>
+      </div>
+
+      <div class="s-quiz-question active" data-q="0">
+        <div class="s-quiz-q-num">Question 1 of 5</div>
+        <div class="s-quiz-q-text">Over the past week, how would you describe your overall energy level?</div>
+        <div class="s-quiz-options">
+          <button class="s-quiz-option" data-value="2" onclick="selectOption(this, 0)">High &mdash; I've felt motivated and active</button>
+          <button class="s-quiz-option" data-value="1" onclick="selectOption(this, 0)">Moderate &mdash; some good days, some low days</button>
+          <button class="s-quiz-option" data-value="-1" onclick="selectOption(this, 0)">Low &mdash; getting through the basics has felt hard</button>
+          <button class="s-quiz-option" data-value="-2" onclick="selectOption(this, 0)">Very low &mdash; I've been running on empty</button>
+        </div>
+      </div>
+
+      <div class="s-quiz-question" data-q="1">
+        <div class="s-quiz-q-num">Question 2 of 5</div>
+        <div class="s-quiz-q-text">How often have you felt worried, anxious, or on edge recently?</div>
+        <div class="s-quiz-options">
+          <button class="s-quiz-option" data-value="2" onclick="selectOption(this, 1)">Rarely &mdash; I've felt relatively calm</button>
+          <button class="s-quiz-option" data-value="1" onclick="selectOption(this, 1)">Sometimes &mdash; worry comes and goes</button>
+          <button class="s-quiz-option" data-value="-1" onclick="selectOption(this, 1)">Often &mdash; it's been a background hum most days</button>
+          <button class="s-quiz-option" data-value="-2" onclick="selectOption(this, 1)">Almost constantly &mdash; it's been hard to switch off</button>
+        </div>
+      </div>
+
+      <div class="s-quiz-question" data-q="2">
+        <div class="s-quiz-q-num">Question 3 of 5</div>
+        <div class="s-quiz-q-text">When something enjoyable happens, are you able to feel that enjoyment?</div>
+        <div class="s-quiz-options">
+          <button class="s-quiz-option" data-value="2" onclick="selectOption(this, 2)">Yes &mdash; I can genuinely feel pleasure and warmth</button>
+          <button class="s-quiz-option" data-value="1" onclick="selectOption(this, 2)">Sometimes &mdash; but not as fully as I'd like</button>
+          <button class="s-quiz-option" data-value="-1" onclick="selectOption(this, 2)">Rarely &mdash; things that used to feel good feel flat</button>
+          <button class="s-quiz-option" data-value="-2" onclick="selectOption(this, 2)">Almost nothing feels enjoyable right now</button>
+        </div>
+      </div>
+
+      <div class="s-quiz-question" data-q="3">
+        <div class="s-quiz-q-num">Question 4 of 5</div>
+        <div class="s-quiz-q-text">How connected have you felt to the people around you?</div>
+        <div class="s-quiz-options">
+          <button class="s-quiz-option" data-value="2" onclick="selectOption(this, 3)">Very connected &mdash; relationships feel supportive</button>
+          <button class="s-quiz-option" data-value="1" onclick="selectOption(this, 3)">Somewhat &mdash; some connections feel good, others strained</button>
+          <button class="s-quiz-option" data-value="-1" onclick="selectOption(this, 3)">Disconnected &mdash; I've been pulling away or feeling unseen</button>
+          <button class="s-quiz-option" data-value="-2" onclick="selectOption(this, 3)">Quite isolated &mdash; I feel alone even around others</button>
+        </div>
+      </div>
+
+      <div class="s-quiz-question" data-q="4">
+        <div class="s-quiz-q-num">Question 5 of 5</div>
+        <div class="s-quiz-q-text">How would you describe the way you talk to yourself internally?</div>
+        <div class="s-quiz-options">
+          <button class="s-quiz-option" data-value="2" onclick="selectOption(this, 4)">Mostly kind &mdash; I give myself reasonable grace</button>
+          <button class="s-quiz-option" data-value="1" onclick="selectOption(this, 4)">Mixed &mdash; sometimes supportive, sometimes critical</button>
+          <button class="s-quiz-option" data-value="-1" onclick="selectOption(this, 4)">Often critical &mdash; I'm quite hard on myself</button>
+          <button class="s-quiz-option" data-value="-2" onclick="selectOption(this, 4)">Very harsh &mdash; my inner voice can feel like an enemy</button>
+        </div>
+      </div>
+
+      <div class="s-quiz-nav">
+        <button class="s-quiz-nav-btn" id="prevBtn" onclick="quizNav(-1)" disabled>← Back</button>
+        <button class="s-quiz-nav-btn primary" id="nextBtn" onclick="quizNav(1)" disabled>Next →</button>
+      </div>
+
+      <div class="s-quiz-result" id="quizResult">
+        <div class="s-quiz-result-card">
+          <div class="s-quiz-result-header">
+            <div class="s-quiz-result-label">Your Emotional Snapshot</div>
+            <div class="s-quiz-result-state" id="quizResultState"></div>
+            <p id="quizResultIntro"></p>
+          </div>
+          <div class="s-quiz-result-body">
+            <h4 id="quizResultSubhead"></h4>
+            <p id="quizResultDetail"></p>
+            <ul class="s-quiz-suggestions-list" id="quizSuggestions"></ul>
+            <button class="s-quiz-restart-btn" onclick="restartQuiz()">Take again</button>
+            <a href="/contact#contact-form" class="s-btn-small">Book a Free Consultation</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="s-footer">
+    <div class="s-footer-grid">
+      <div>
+        <div class="s-footer-brand-name">Sentari<em>.</em></div>
+        <p class="s-footer-desc">A psychology practice rooted in compassion, evidence, and the belief that every person carries within them the capacity to heal.</p>
+      </div>
+      <div class="s-footer-col"><h4>Navigation</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/articles">Articles</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="s-footer-col"><h4>Specializations</h4><ul><li>Anxiety &amp; Stress</li><li>Burnout</li><li>Trauma</li><li>Grief &amp; Loss</li><li>Relationships</li><li>Life Transitions</li></ul></div>
+      <div class="s-footer-col"><h4>Contact</h4><ul><li>hello@sentari.com</li><li>Nairobi, Kenya</li><li>Online sessions available</li><li style="margin-top:12px;color:#EACBC4;">Crisis line (Kenya):<br>+254 722 178 177</li></ul></div>
+    </div>
+    <div class="s-footer-bottom">
+      <span>&copy; 2026 Sentari Psychology. All rights reserved.</span>
+      <span><a href="/privacy-policy">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms">Terms</a> &nbsp;&middot;&nbsp; <a href="/disclaimer">Disclaimer</a></span>
+    </div>
+  </footer>
+
+  <div class="s-disclaimer">
+    <strong>Important:</strong> The content on this website is for informational and educational purposes only. This tool does not provide a diagnosis or constitute professional psychological care. If you are in crisis, please contact Befrienders Kenya at <strong>+254 722 178 177</strong> or go to your nearest emergency room.
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.s-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.s-tool-section').forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  function updateCharCount(el) {
+    document.getElementById('charCount').textContent = el.value.length + ' / 1000';
+  }
+
+  async function analyzeEmotion() {
+    const text = document.getElementById('emotionText').value.trim();
+    if (!text || text.length < 20) {
+      alert('Please write a bit more — at least a sentence or two helps get an accurate reflection.');
+      return;
+    }
+
+    const btn = document.getElementById('analyzeBtn');
+    btn.disabled = true;
+    btn.textContent = 'Analyzing...';
+    document.getElementById('loadingState').classList.add('show');
+    document.getElementById('resultBox').classList.remove('show');
+
+    try {
+      // NOTE: This calls a serverless proxy at /api/analyze-emotion, NOT the Anthropic API directly.
+      // Never call api.anthropic.com from client-side JS — it exposes your API key.
+      // See /api/analyze-emotion.js for the server-side proxy implementation.
+      const response = await fetch('/api/analyze-emotion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+
+      if (!response.ok) throw new Error('API error');
+      const parsed = await response.json();
+      renderResult(parsed);
+
+    } catch (err) {
+      renderResult({
+        emotions: [
+          { label: "Processing", percent: 60, color: "olive" },
+          { label: "Reflection needed", percent: 40, color: "moss" }
+        ],
+        reflection: "It sounds like you're carrying something meaningful today. Your willingness to name it — even to yourself — is already an act of self-awareness. Give yourself credit for that.",
+        suggestions: ["Take a few slow breaths", "Reach out to someone you trust", "Consider speaking with a professional"],
+        crisis: false
+      });
+    } finally {
+      document.getElementById('loadingState').classList.remove('show');
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Reflect My Emotions';
+    }
+  }
+
+  function renderResult(data) {
+    const barsEl = document.getElementById('emotionBars');
+    barsEl.innerHTML = '';
+    data.emotions.forEach(e => {
+      barsEl.innerHTML += `
+        <div class="s-emotion-bar-item">
+          <div class="s-bar-label"><span>${e.label}</span><span>${e.percent}%</span></div>
+          <div class="s-bar-track"><div class="s-bar-fill ${e.color}" style="width:0%" data-target="${e.percent}%"></div></div>
+        </div>`;
+    });
+
+    document.getElementById('reflectionText').textContent = data.reflection;
+
+    const chips = document.getElementById('suggestionChips');
+    chips.innerHTML = '';
+    data.suggestions.forEach(s => { chips.innerHTML += `<span class="s-chip">${s}</span>`; });
+
+    if (data.crisis) {
+      chips.innerHTML += `<span class="s-chip" style="background:var(--blush);border-color:var(--blush);">🆘 Crisis line: +254 722 178 177</span>`;
+    }
+
+    document.getElementById('resultBox').classList.add('show');
+
+    setTimeout(() => {
+      document.querySelectorAll('.s-bar-fill').forEach(el => { el.style.width = el.dataset.target; });
+    }, 100);
+  }
+
+  let currentQ = 0;
+  const answers = [null, null, null, null, null];
+  const totalQ = 5;
+
+  function selectOption(btn, qIndex) {
+    btn.closest('.s-quiz-options').querySelectorAll('.s-quiz-option').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    answers[qIndex] = parseInt(btn.dataset.value);
+    document.getElementById('nextBtn').disabled = false;
+  }
+
+  function quizNav(dir) {
+    const questions = document.querySelectorAll('.s-quiz-question');
+    if (dir === 1 && answers[currentQ] === null) return;
+
+    questions[currentQ].classList.remove('active');
+    updateDot(currentQ, 'done');
+    currentQ += dir;
+
+    if (currentQ >= totalQ) { showQuizResult(); return; }
+
+    questions[currentQ].classList.add('active');
+    updateDot(currentQ, 'current');
+
+    document.getElementById('prevBtn').disabled = currentQ === 0;
+    document.getElementById('nextBtn').disabled = answers[currentQ] === null;
+    document.getElementById('nextBtn').textContent = currentQ === totalQ - 1 ? 'See My Results →' : 'Next →';
+  }
+
+  function updateDot(i, state) {
+    document.getElementById('dot' + i).className = 's-progress-dot ' + state;
+  }
+
+  function showQuizResult() {
+    document.querySelectorAll('.s-quiz-question').forEach(q => q.classList.remove('active'));
+    document.querySelector('.s-quiz-nav').style.display = 'none';
+    document.getElementById('quizProgress').style.display = 'none';
+
+    const score = answers.reduce((a, b) => a + b, 0);
+    let state, intro, subhead, detail, suggestions;
+
+    if (score >= 6) {
+      state = "You're in a <em>grounded place.</em>";
+      intro = "Your responses suggest you're feeling relatively balanced and resourced right now. That's worth acknowledging.";
+      subhead = "How to protect this state";
+      detail = "Emotional wellbeing isn't a destination — it needs tending. The fact that things feel okay right now is a sign that some of what you're doing is working. The task is staying curious about what that is.";
+      suggestions = ["Reflect on what's contributing to this sense of groundedness", "Use this window to build routines that support your wellbeing", "Consider what you'd want in place if a harder season arrived", "Connection and rest tend to be the biggest factors — keep investing in both"];
+    } else if (score >= 1) {
+      state = "You're navigating some <em>complexity.</em>";
+      intro = "You're in a mixed place — some things feeling okay, others feeling harder. This is where most of us live most of the time.";
+      subhead = "What tends to help in the middle ground";
+      detail = "The in-between zone — not crisis, but not quite okay — is often where people need support most and seek it least. It's easy to dismiss what you're feeling as 'not bad enough.' But it's worth paying attention to.";
+      suggestions = ["Name what specifically feels hard vs what feels manageable", "Small, consistent self-care actions tend to move the needle (sleep, movement, connection)", "Consider whether there's something you've been putting off that's creating background weight", "Speaking with a therapist doesn't require being in crisis — the middle ground is a good time to start"];
+    } else if (score >= -5) {
+      state = "You're carrying <em>quite a lot right now.</em>";
+      intro = "Your responses suggest you've been under sustained strain. That matters, and it deserves real attention — not minimizing.";
+      subhead = "Gentle starting points";
+      detail = "Feeling this way doesn't mean you've failed at anything. It means you're human and you've been through something — or many things. The most important thing right now isn't fixing it; it's not carrying it entirely alone.";
+      suggestions = ["Reach out to one person you trust — just to talk, not to solve", "A professional conversation can be genuinely helpful at this stage", "Rest wherever you can — your nervous system needs it", "Avoid the pressure to 'be better' immediately; recovery is not linear"];
+    } else {
+      state = "This sounds <em>really heavy.</em>";
+      intro = "Your responses suggest you're in real distress right now. Please don't carry this alone.";
+      subhead = "Please reach out";
+      detail = "What you're experiencing sounds significant, and you deserve proper support. This tool isn't equipped to give you what you need — but real people are. Please consider reaching out to a mental health professional or a trusted person in your life today.";
+      suggestions = ["Call Befrienders Kenya: +254 722 178 177 (available 24/7)", "Book an appointment with Dr. Amara — free consultation, no commitment", "Tell someone you trust how you're actually feeling", "If you feel unsafe, please go to your nearest emergency room or call emergency services"];
+    }
+
+    document.getElementById('quizResultState').innerHTML = state;
+    document.getElementById('quizResultIntro').textContent = intro;
+    document.getElementById('quizResultSubhead').textContent = subhead;
+    document.getElementById('quizResultDetail').textContent = detail;
+
+    const ul = document.getElementById('quizSuggestions');
+    ul.innerHTML = '';
+    suggestions.forEach(s => { ul.innerHTML += `<li>${s}</li>`; });
+
+    document.getElementById('quizResult').classList.add('show');
+  }
+
+  function restartQuiz() {
+    currentQ = 0;
+    answers.fill(null);
+
+    document.querySelectorAll('.s-quiz-question').forEach((q, i) => {
+      q.classList.remove('active');
+      q.querySelectorAll('.s-quiz-option').forEach(b => b.classList.remove('selected'));
+      document.getElementById('dot' + i).className = 's-progress-dot' + (i === 0 ? ' current' : '');
+    });
+
+    document.querySelectorAll('.s-quiz-question')[0].classList.add('active');
+    document.getElementById('quizResult').classList.remove('show');
+    document.querySelector('.s-quiz-nav').style.display = 'flex';
+    document.getElementById('quizProgress').style.display = 'flex';
+    document.getElementById('prevBtn').disabled = true;
+    document.getElementById('nextBtn').disabled = true;
+    document.getElementById('nextBtn').textContent = 'Next →';
+  }
+</script>
+</body>
+</html>

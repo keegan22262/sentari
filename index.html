@@ -1,289 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Sentari Psychology</title>
+<meta name="description" content="Sentari Psychology — evidence-based, compassionate therapy with Dr. Amara Njoki. Nairobi, Kenya & online.">
+</head>
+<body>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
-  
-    .sentari-page {
-      --olive: #6F7B6F; --olive-dark: #4F5A50; --cream: #EEE6DB; --cream-light: #FAF6EE;
-      --blush: #EACBC4; --moss: #BCB8A7; --sage: #909A97; --bluestone: #7B868E;
-      --ink: #2C3530; --muted: #6B6B6B; --gold: #C9A96E;
-      font-family: 'Inter', -apple-system, sans-serif;
-      color: var(--ink); background: var(--cream-light); line-height: 1.6; margin: 0; padding: 0;
-    }
-    .sentari-page * { box-sizing: border-box; }
-    .sentari-page img { max-width: 100%; height: auto; display: block; }
-  
-    .s-announce {
-      background: var(--olive-dark); color: var(--cream); text-align: center;
-      padding: 10px 16px; font-size: 12px; letter-spacing: 1.5px; font-weight: 400;
-    }
-    .s-announce a { color: var(--blush); text-decoration: underline; }
-  
-    .s-nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 5%; background: #fff; border-bottom: 0.5px solid rgba(44,53,48,0.08);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .s-nav-logo {
-      font-family: 'DM Serif Display', serif; font-size: 24px;
-      color: var(--olive-dark); letter-spacing: 1px; text-decoration: none;
-    }
-    .s-nav-logo span { color: var(--blush); font-style: italic; }
-    .s-nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; align-items: center; }
-    .s-nav-links a { text-decoration: none; color: var(--ink); font-size: 13px; font-weight: 400; letter-spacing: 0.5px; transition: color 0.2s; }
-    .s-nav-links a:hover, .s-nav-links a.active { color: var(--olive); }
-    .s-nav-cta {
-      background: var(--olive); color: #fff !important; padding: 10px 20px;
-      font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
-      transition: background 0.2s; border-radius: 2px;
-    }
-    .s-nav-cta:hover { background: var(--olive-dark) !important; }
-  
-    .s-hero { background: var(--cream-light); padding: 70px 6% 90px; }
-    .s-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .s-hero-img { aspect-ratio: 4/5; background-size: cover; background-position: center; border-radius: 2px; background-image: url('https://picsum.photos/seed/sentari-hero/700/900'); }
-    .s-hero-text { padding-left: 20px; }
-    .s-script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 38px; color: var(--olive); margin: 0 0 12px; font-weight: 400; }
-    .s-hero h1 { font-family: 'DM Serif Display', serif; font-size: 44px; line-height: 1.15; color: var(--ink); margin: 0 0 28px; font-weight: 400; letter-spacing: 0.5px; text-transform: uppercase; }
-    .s-hero-cta { display: inline-block; background: var(--olive); color: #fff; padding: 16px 32px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
-    .s-hero-cta:hover { background: var(--olive-dark); }
-  
-    .s-feeling { background: var(--olive); color: var(--cream); padding: 100px 6%; text-align: center; }
-    .s-feeling h2 { font-family: 'DM Serif Display', serif; font-size: 38px; color: var(--cream); margin: 0 0 28px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.25; }
-    .s-feeling p { max-width: 680px; margin: 0 auto 18px; font-size: 15px; line-height: 1.9; opacity: 0.92; font-weight: 300; }
-    .s-feeling-cta { display: inline-block; margin-top: 30px; background: var(--gold); color: var(--olive-dark); padding: 16px 36px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.2s; }
-    .s-feeling-cta:hover { background: var(--blush); }
-  
-    .s-intro { background: var(--cream-light); padding: 100px 6%; }
-    .s-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .s-intro-img { aspect-ratio: 3/4; background-size: cover; background-position: center; background-image: url('https://picsum.photos/seed/sentari-therapist/600/800'); }
-    .s-intro-text { padding-right: 20px; }
-    .s-hi { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 3px; color: var(--sage); text-transform: uppercase; margin: 0 0 8px; }
-    .s-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 52px; color: var(--olive); margin: 0 0 18px; line-height: 1; }
-    .s-role { font-size: 12px; letter-spacing: 2px; color: var(--ink); text-transform: uppercase; margin: 0 0 28px; font-weight: 500; }
-    .s-bio { font-size: 15px; line-height: 1.85; color: var(--ink); margin-bottom: 16px; }
-    .s-about-cta { display: inline-block; margin-top: 18px; background: var(--olive); color: #fff; padding: 14px 28px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
-    .s-about-cta:hover { background: var(--olive-dark); }
-  
-    .s-individual { background: var(--cream-light); padding: 60px 6% 100px; }
-    .s-individual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .s-ind-text { padding-right: 30px; }
-    .s-ind-text h2 { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--ink); margin: 0 0 24px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.2; }
-    .s-ind-text p { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 14px; }
-    .s-ind-img { aspect-ratio: 1/1; background-size: cover; background-position: center; background-image: url('https://picsum.photos/seed/sentari-meadow/700/700'); }
-    .s-learn-btn { display: inline-block; margin-top: 18px; background: transparent; border: 1px solid var(--olive); color: var(--olive); padding: 12px 26px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
-    .s-learn-btn:hover { background: var(--olive); color: #fff; }
-  
-    .s-offerings { background: var(--cream-light); padding: 70px 6% 110px; text-align: center; }
-    .s-offerings h2 { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--ink); margin: 0 0 60px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; }
-    .s-offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-    .s-offering-card { text-align: left; }
-    .s-offering-img { aspect-ratio: 4/3; background-size: cover; background-position: center; margin-bottom: 18px; }
-    .s-offering-card h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); margin: 0 0 8px; font-weight: 400; }
-    .s-offering-card p { font-size: 14px; line-height: 1.7; color: var(--muted); margin: 0 0 12px; }
-    .s-offering-link { font-size: 11px; letter-spacing: 2px; color: var(--olive); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--olive); padding-bottom: 2px; }
-  
-    .s-articles { background: var(--cream); padding: 100px 6%; }
-    .s-articles-header { display: flex; justify-content: space-between; align-items: end; max-width: 1200px; margin: 0 auto 50px; flex-wrap: wrap; gap: 20px; }
-    .s-articles-header h2 { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--ink); margin: 0; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; }
-    .s-articles-header .s-script-sm { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--olive); margin-bottom: 6px; }
-    .s-articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-    .s-article-card { background: #fff; overflow: hidden; transition: transform 0.3s; }
-    .s-article-card:hover { transform: translateY(-4px); }
-    .s-article-img { aspect-ratio: 16/10; background-size: cover; background-position: center; }
-    .s-article-body { padding: 26px 24px 30px; }
-    .s-article-tag { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; font-weight: 500; }
-    .s-article-card h3 { font-family: 'DM Serif Display', serif; font-size: 21px; color: var(--ink); margin: 10px 0 12px; font-weight: 400; line-height: 1.3; }
-    .s-article-card p { font-size: 14px; line-height: 1.7; color: var(--muted); margin: 0; }
-  
-    .s-emotion { background: var(--olive-dark); color: var(--cream); padding: 110px 6%; text-align: center; }
-    .s-emotion-script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 32px; color: var(--blush); margin: 0 0 14px; }
-    .s-emotion h2 { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--cream); margin: 0 0 24px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.2; }
-    .s-emotion p { max-width: 600px; margin: 0 auto 30px; font-size: 15px; line-height: 1.85; opacity: 0.9; font-weight: 300; }
-    .s-emotion-btn { display: inline-block; background: var(--blush); color: var(--olive-dark); padding: 16px 38px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.2s; }
-    .s-emotion-btn:hover { background: var(--cream); }
-  
-    .s-footer { background: var(--ink); color: var(--cream); padding: 70px 6% 30px; }
-    .s-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto 50px; }
-    .s-footer-grid h4 { font-family: 'DM Serif Display', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--blush); margin: 0 0 18px; font-weight: 400; }
-    .s-footer-grid p, .s-footer-grid a { font-size: 13px; line-height: 1.9; color: var(--moss); text-decoration: none; display: block; }
-    .s-footer-grid a:hover { color: var(--blush); }
-    .s-footer-logo { font-family: 'DM Serif Display', serif; font-size: 28px; letter-spacing: 1px; margin: 0 0 14px; color: var(--cream); }
-    .s-footer-bottom { text-align: center; padding-top: 26px; border-top: 1px solid rgba(238,230,219,0.12); font-size: 11px; letter-spacing: 1.5px; color: var(--moss); }
-    .s-footer-bottom strong { color: var(--cream); font-weight: 500; }
-    .s-disclaimer { max-width: 720px; margin: 22px auto 0; font-size: 11px; line-height: 1.7; color: rgba(238,230,219,0.55); letter-spacing: 0.3px; text-transform: none; }
-  
-    @media (max-width: 880px) {
-      .s-nav-links { display: none; }
-      .s-hero-grid, .s-intro-grid, .s-individual-grid { grid-template-columns: 1fr; gap: 40px; }
-      .s-hero-text, .s-intro-text, .s-ind-text { padding: 0; }
-      .s-hero h1 { font-size: 30px; }
-      .s-feeling h2, .s-emotion h2 { font-size: 26px; }
-      .s-name { font-size: 38px; }
-      .s-offerings-grid, .s-articles-grid { grid-template-columns: 1fr; }
-      .s-footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-      .s-hero { padding: 40px 6% 60px; }
-      .s-feeling, .s-intro, .s-individual, .s-offerings, .s-articles, .s-emotion { padding: 60px 6%; }
-    }
-  </style>
-  
-  <div class="sentari-page">
-  
-    <div class="s-announce">Now accepting new clients &mdash; <a href="/contact#contact-form">Book a free 15-minute consultation</a></div>
-  
-    <nav class="s-nav">
-      <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
-      <ul class="s-nav-links">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/articles">Articles</a></li>
-        <li><a href="/emotion-check-in">Emotion Check-In</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/contact#contact-form" class="s-nav-cta">Book a Session</a></li>
-      </ul>
-    </nav>
-  
-    <section class="s-hero">
-      <div class="s-hero-grid">
-        <div class="s-hero-img"></div>
-        <div class="s-hero-text">
-          <p class="s-script">welcome</p>
-          <h1>A Quieter Way to Understand What You're Feeling</h1>
-          <a href="/contact#contact-form" class="s-hero-cta">Book Your First Session</a>
-        </div>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+  .sentari-page {
+    --olive: #6F7B6F; --olive-dark: #4F5A50; --cream: #EEE6DB; --cream-light: #FAF6EE;
+    --blush: #EACBC4; --moss: #BCB8A7; --sage: #909A97; --bluestone: #7B868E;
+    --ink: #2C3530; --muted: #6B6B6B; --gold: #C9A96E;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--ink); background: var(--cream-light); line-height: 1.6; margin: 0; padding: 0;
+  }
+  .sentari-page * { box-sizing: border-box; }
+  .sentari-page img { max-width: 100%; height: auto; display: block; }
+
+  .s-announce {
+    background: var(--olive-dark); color: var(--cream); text-align: center;
+    padding: 10px 16px; font-size: 12px; letter-spacing: 1.5px; font-weight: 400;
+  }
+  .s-announce a { color: var(--blush); text-decoration: underline; }
+
+  .s-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%; background: #fff; border-bottom: 0.5px solid rgba(44,53,48,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .s-nav-logo {
+    font-family: 'DM Serif Display', serif; font-size: 24px;
+    color: var(--olive-dark); letter-spacing: 1px; text-decoration: none;
+  }
+  .s-nav-logo span { color: var(--blush); font-style: italic; }
+  .s-nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; align-items: center; }
+  .s-nav-links a { text-decoration: none; color: var(--ink); font-size: 13px; font-weight: 400; letter-spacing: 0.5px; transition: color 0.2s; }
+  .s-nav-links a:hover, .s-nav-links a.active { color: var(--olive); }
+  .s-nav-cta {
+    background: var(--olive); color: #fff !important; padding: 10px 20px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+    transition: background 0.2s; border-radius: 2px;
+  }
+  .s-nav-cta:hover { background: var(--olive-dark) !important; }
+
+  .s-hero { background: var(--cream-light); padding: 70px 6% 90px; }
+  .s-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .s-hero-img { aspect-ratio: 4/5; background-size: cover; background-position: center; border-radius: 2px; background-image: url('https://picsum.photos/seed/sentari-hero/700/900'); }
+  .s-hero-text { padding-left: 20px; }
+  .s-script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 38px; color: var(--olive); margin: 0 0 12px; font-weight: 400; }
+  .s-hero h1 { font-family: 'DM Serif Display', serif; font-size: 44px; line-height: 1.15; color: var(--ink); margin: 0 0 28px; font-weight: 400; letter-spacing: 0.5px; text-transform: uppercase; }
+  .s-hero-cta { display: inline-block; background: var(--olive); color: #fff; padding: 16px 32px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .s-hero-cta:hover { background: var(--olive-dark); }
+
+  .s-feeling { background: var(--olive); color: var(--cream); padding: 100px 6%; text-align: center; }
+  .s-feeling h2 { font-family: 'DM Serif Display', serif; font-size: 38px; color: var(--cream); margin: 0 0 28px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.25; }
+  .s-feeling p { max-width: 680px; margin: 0 auto 18px; font-size: 15px; line-height: 1.9; opacity: 0.92; font-weight: 300; }
+  .s-feeling-cta { display: inline-block; margin-top: 30px; background: var(--gold); color: var(--olive-dark); padding: 16px 36px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+  .s-feeling-cta:hover { background: var(--blush); }
+
+  .s-intro { background: var(--cream-light); padding: 100px 6%; }
+  .s-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .s-intro-img { aspect-ratio: 3/4; background-size: cover; background-position: center; background-image: url('https://picsum.photos/seed/sentari-therapist/600/800'); }
+  .s-intro-text { padding-right: 20px; }
+  .s-hi { font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 3px; color: var(--sage); text-transform: uppercase; margin: 0 0 8px; }
+  .s-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 52px; color: var(--olive); margin: 0 0 18px; line-height: 1; }
+  .s-role { font-size: 12px; letter-spacing: 2px; color: var(--ink); text-transform: uppercase; margin: 0 0 28px; font-weight: 500; }
+  .s-bio { font-size: 15px; line-height: 1.85; color: var(--ink); margin-bottom: 16px; }
+  .s-about-cta { display: inline-block; margin-top: 18px; background: var(--olive); color: #fff; padding: 14px 28px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .s-about-cta:hover { background: var(--olive-dark); }
+
+  .s-individual { background: var(--cream-light); padding: 60px 6% 100px; }
+  .s-individual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .s-ind-text { padding-right: 30px; }
+  .s-ind-text h2 { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--ink); margin: 0 0 24px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.2; }
+  .s-ind-text p { font-size: 15px; line-height: 1.85; color: var(--muted); margin-bottom: 14px; }
+  .s-ind-img { aspect-ratio: 1/1; background-size: cover; background-position: center; background-image: url('https://picsum.photos/seed/sentari-meadow/700/700'); }
+  .s-learn-btn { display: inline-block; margin-top: 18px; background: transparent; border: 1px solid var(--olive); color: var(--olive); padding: 12px 26px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+  .s-learn-btn:hover { background: var(--olive); color: #fff; }
+
+  .s-offerings { background: var(--cream-light); padding: 70px 6% 110px; text-align: center; }
+  .s-offerings h2 { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--ink); margin: 0 0 60px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; }
+  .s-offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .s-offering-card { text-align: left; }
+  .s-offering-img { aspect-ratio: 4/3; background-size: cover; background-position: center; margin-bottom: 18px; }
+  .s-offering-card h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); margin: 0 0 8px; font-weight: 400; }
+  .s-offering-card p { font-size: 14px; line-height: 1.7; color: var(--muted); margin: 0 0 12px; }
+  .s-offering-link { font-size: 11px; letter-spacing: 2px; color: var(--olive); text-decoration: none; text-transform: uppercase; border-bottom: 1px solid var(--olive); padding-bottom: 2px; }
+
+  .s-articles { background: var(--cream); padding: 100px 6%; }
+  .s-articles-header { display: flex; justify-content: space-between; align-items: end; max-width: 1200px; margin: 0 auto 50px; flex-wrap: wrap; gap: 20px; }
+  .s-articles-header h2 { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--ink); margin: 0; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; }
+  .s-articles-header .s-script-sm { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--olive); margin-bottom: 6px; }
+  .s-articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+  .s-article-card { background: #fff; overflow: hidden; transition: transform 0.3s; }
+  .s-article-card:hover { transform: translateY(-4px); }
+  .s-article-img { aspect-ratio: 16/10; background-size: cover; background-position: center; }
+  .s-article-body { padding: 26px 24px 30px; }
+  .s-article-tag { font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; font-weight: 500; }
+  .s-article-card h3 { font-family: 'DM Serif Display', serif; font-size: 21px; color: var(--ink); margin: 10px 0 12px; font-weight: 400; line-height: 1.3; }
+  .s-article-card p { font-size: 14px; line-height: 1.7; color: var(--muted); margin: 0; }
+
+  .s-emotion { background: var(--olive-dark); color: var(--cream); padding: 110px 6%; text-align: center; }
+  .s-emotion-script { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 32px; color: var(--blush); margin: 0 0 14px; }
+  .s-emotion h2 { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--cream); margin: 0 0 24px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+  .s-emotion p { max-width: 600px; margin: 0 auto 30px; font-size: 15px; line-height: 1.85; opacity: 0.9; font-weight: 300; }
+  .s-emotion-btn { display: inline-block; background: var(--blush); color: var(--olive-dark); padding: 16px 38px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+  .s-emotion-btn:hover { background: var(--cream); }
+
+  .s-footer { background: var(--ink); color: var(--cream); padding: 70px 6% 30px; }
+  .s-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto 50px; }
+  .s-footer-grid h4 { font-family: 'DM Serif Display', serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--blush); margin: 0 0 18px; font-weight: 400; }
+  .s-footer-grid p, .s-footer-grid a { font-size: 13px; line-height: 1.9; color: var(--moss); text-decoration: none; display: block; }
+  .s-footer-grid a:hover { color: var(--blush); }
+  .s-footer-logo { font-family: 'DM Serif Display', serif; font-size: 28px; letter-spacing: 1px; margin: 0 0 14px; color: var(--cream); }
+  .s-footer-bottom { text-align: center; padding-top: 26px; border-top: 1px solid rgba(238,230,219,0.12); font-size: 11px; letter-spacing: 1.5px; color: var(--moss); }
+  .s-footer-bottom strong { color: var(--cream); font-weight: 500; }
+  .s-disclaimer { max-width: 720px; margin: 22px auto 0; font-size: 11px; line-height: 1.7; color: rgba(238,230,219,0.55); letter-spacing: 0.3px; text-transform: none; }
+
+  @media (max-width: 880px) {
+    .s-nav-links { display: none; }
+    .s-hero-grid, .s-intro-grid, .s-individual-grid { grid-template-columns: 1fr; gap: 40px; }
+    .s-hero-text, .s-intro-text, .s-ind-text { padding: 0; }
+    .s-hero h1 { font-size: 30px; }
+    .s-feeling h2, .s-emotion h2 { font-size: 26px; }
+    .s-name { font-size: 38px; }
+    .s-offerings-grid, .s-articles-grid { grid-template-columns: 1fr; }
+    .s-footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .s-hero { padding: 40px 6% 60px; }
+    .s-feeling, .s-intro, .s-individual, .s-offerings, .s-articles, .s-emotion { padding: 60px 6%; }
+  }
+</style>
+
+<div class="sentari-page">
+
+  <div class="s-announce">Now accepting new clients &mdash; <a href="/contact#contact-form">Book a free 15-minute consultation</a></div>
+
+  <nav class="s-nav">
+    <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
+    <ul class="s-nav-links">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/articles">Articles</a></li>
+      <li><a href="/emotion-check-in">Emotion Check-In</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/contact#contact-form" class="s-nav-cta">Book a Session</a></li>
+    </ul>
+  </nav>
+
+  <section class="s-hero">
+    <div class="s-hero-grid">
+      <div class="s-hero-img"></div>
+      <div class="s-hero-text">
+        <p class="s-script">welcome</p>
+        <h1>A Quieter Way to Understand What You're Feeling</h1>
+        <a href="/contact#contact-form" class="s-hero-cta">Book Your First Session</a>
       </div>
-    </section>
-  
-    <section class="s-feeling">
-      <h2>Are You Feeling Overwhelmed,<br>Anxious, or Stuck?</h2>
-      <p>You're not alone. Anxiety and stress are now the most common reasons people seek therapy &mdash; and many are reaching out for support earlier than ever before. If you've been carrying the weight of burnout, grief, relationship strain, or simply feeling disconnected from yourself, that's a signal worth listening to.</p>
-      <p>Therapy is a space to slow down, make sense of what you're carrying, and build the kind of inner steadiness that lasts beyond a single conversation. You don't have to have the right words to begin.</p>
-      <a href="/services" class="s-feeling-cta">Explore Our Services</a>
-    </section>
-  
-    <section class="s-intro">
-      <div class="s-intro-grid">
-        <div class="s-intro-img"></div>
-        <div class="s-intro-text">
-          <p class="s-hi">HI, I'M</p>
-          <h2 class="s-name">Dr. Amara Njoki</h2>
-          <p class="s-role">CLINICAL PSYCHOLOGIST &middot; SENTARI FOUNDER</p>
-          <p class="s-bio">My work sits at the intersection of evidence-based psychology and genuine human warmth. I help clients navigate anxiety, burnout, trauma, life transitions, and the quieter ache of feeling like something is off but not knowing what to call it.</p>
-          <p class="s-bio">I draw from cognitive-behavioural therapy, trauma-informed care, and somatic approaches because real change rarely lives in only one of those rooms. If you've been thinking about therapy but it feels like a big step &mdash; I get it. The first conversation is always the hardest, and I'll meet you there with patience and zero pressure.</p>
-          <a href="/about" class="s-about-cta">More About My Approach</a>
-        </div>
+    </div>
+  </section>
+
+  <section class="s-feeling">
+    <h2>Are You Feeling Overwhelmed,<br>Anxious, or Stuck?</h2>
+    <p>You're not alone. Anxiety and stress are now the most common reasons people seek therapy &mdash; and many are reaching out for support earlier than ever before. If you've been carrying the weight of burnout, grief, relationship strain, or simply feeling disconnected from yourself, that's a signal worth listening to.</p>
+    <p>Therapy is a space to slow down, make sense of what you're carrying, and build the kind of inner steadiness that lasts beyond a single conversation. You don't have to have the right words to begin.</p>
+    <a href="/services" class="s-feeling-cta">Explore Our Services</a>
+  </section>
+
+  <section class="s-intro">
+    <div class="s-intro-grid">
+      <div class="s-intro-img"></div>
+      <div class="s-intro-text">
+        <p class="s-hi">HI, I'M</p>
+        <h2 class="s-name">Dr. Amara Njoki</h2>
+        <p class="s-role">CLINICAL PSYCHOLOGIST &middot; SENTARI FOUNDER</p>
+        <p class="s-bio">My work sits at the intersection of evidence-based psychology and genuine human warmth. I help clients navigate anxiety, burnout, trauma, life transitions, and the quieter ache of feeling like something is off but not knowing what to call it.</p>
+        <p class="s-bio">I draw from cognitive-behavioural therapy, trauma-informed care, and somatic approaches because real change rarely lives in only one of those rooms. If you've been thinking about therapy but it feels like a big step &mdash; I get it. The first conversation is always the hardest, and I'll meet you there with patience and zero pressure.</p>
+        <a href="/about" class="s-about-cta">More About My Approach</a>
       </div>
-    </section>
-  
-    <section class="s-individual">
-      <div class="s-individual-grid">
-        <div class="s-ind-text">
-          <h2>Individual Psychotherapy</h2>
-          <p>Therapy is a collaborative process between you and a warm, experienced clinician &mdash; a confidential space to explore the patterns, emotions, and experiences shaping your life right now.</p>
-          <p>Through evidence-based techniques and honest conversation, we work together to ease distress, strengthen mental wellbeing, and help you reconnect with the parts of yourself that have felt distant or hard to access.</p>
-          <a href="/services" class="s-learn-btn">Learn More</a>
-        </div>
-        <div class="s-ind-img"></div>
+    </div>
+  </section>
+
+  <section class="s-individual">
+    <div class="s-individual-grid">
+      <div class="s-ind-text">
+        <h2>Individual Psychotherapy</h2>
+        <p>Therapy is a collaborative process between you and a warm, experienced clinician &mdash; a confidential space to explore the patterns, emotions, and experiences shaping your life right now.</p>
+        <p>Through evidence-based techniques and honest conversation, we work together to ease distress, strengthen mental wellbeing, and help you reconnect with the parts of yourself that have felt distant or hard to access.</p>
+        <a href="/services" class="s-learn-btn">Learn More</a>
       </div>
-    </section>
-  
-    <section class="s-offerings">
-      <h2>Other Offerings</h2>
-      <div class="s-offerings-grid">
-        <div class="s-offering-card">
-          <div class="s-offering-img" style="background-image: url('https://picsum.photos/seed/sentari-couples/500/375');"></div>
-          <h3>Couples Therapy</h3>
-          <p>Rebuild connection, communication, and trust with your partner in a structured, judgment-free space.</p>
-          <a href="/services" class="s-offering-link">Learn More &rarr;</a>
-        </div>
-        <div class="s-offering-card">
-          <div class="s-offering-img" style="background-image: url('https://picsum.photos/seed/sentari-trauma/500/375');"></div>
-          <h3>Trauma-Informed Care</h3>
-          <p>Specialised support for processing past experiences using somatic and trauma-focused approaches.</p>
-          <a href="/services" class="s-offering-link">Learn More &rarr;</a>
-        </div>
-        <div class="s-offering-card">
-          <div class="s-offering-img" style="background-image: url('https://picsum.photos/seed/sentari-meadow2/500/375');"></div>
-          <h3>Group Workshops</h3>
-          <p>Small-group programs on anxiety regulation, burnout recovery, and emotional resilience.</p>
-          <a href="/services" class="s-offering-link">Learn More &rarr;</a>
-        </div>
+      <div class="s-ind-img"></div>
+    </div>
+  </section>
+
+  <section class="s-offerings">
+    <h2>Other Offerings</h2>
+    <div class="s-offerings-grid">
+      <div class="s-offering-card">
+        <div class="s-offering-img" style="background-image: url('https://picsum.photos/seed/sentari-couples/500/375');"></div>
+        <h3>Couples Therapy</h3>
+        <p>Rebuild connection, communication, and trust with your partner in a structured, judgment-free space.</p>
+        <a href="/services" class="s-offering-link">Learn More &rarr;</a>
       </div>
-    </section>
-  
-    <section class="s-articles">
-      <div class="s-articles-header">
-        <div>
-          <p class="s-script-sm">words &amp; reflections</p>
-          <h2>From the Journal</h2>
-        </div>
-        <a href="/articles" class="s-learn-btn">All Articles</a>
+      <div class="s-offering-card">
+        <div class="s-offering-img" style="background-image: url('https://picsum.photos/seed/sentari-trauma/500/375');"></div>
+        <h3>Trauma-Informed Care</h3>
+        <p>Specialised support for processing past experiences using somatic and trauma-focused approaches.</p>
+        <a href="/services" class="s-offering-link">Learn More &rarr;</a>
       </div>
-      <div class="s-articles-grid">
-        <article class="s-article-card">
-          <div class="s-article-img" style="background-image: url('https://picsum.photos/seed/sentari-art1/600/375');"></div>
-          <div class="s-article-body">
-            <span class="s-article-tag">ANXIETY</span>
-            <h3>The Quiet Cost of High-Functioning Anxiety</h3>
-            <p>Why looking like you're holding it all together can be one of the most exhausting forms of anxiety to live with.</p>
-          </div>
-        </article>
-        <article class="s-article-card">
-          <div class="s-article-img" style="background-image: url('https://picsum.photos/seed/sentari-art2/600/375');"></div>
-          <div class="s-article-body">
-            <span class="s-article-tag">BURNOUT</span>
-            <h3>Recognising Burnout Before It Becomes Collapse</h3>
-            <p>The early signs we tend to dismiss, and what nervous-system informed recovery actually looks like.</p>
-          </div>
-        </article>
-        <article class="s-article-card">
-          <div class="s-article-img" style="background-image: url('https://picsum.photos/seed/sentari-art3/600/375');"></div>
-          <div class="s-article-body">
-            <span class="s-article-tag">RELATIONSHIPS</span>
-            <h3>What Secure Attachment Really Looks Like in Adulthood</h3>
-            <p>Less about being constantly calm, more about how you repair after rupture.</p>
-          </div>
-        </article>
+      <div class="s-offering-card">
+        <div class="s-offering-img" style="background-image: url('https://picsum.photos/seed/sentari-meadow2/500/375');"></div>
+        <h3>Group Workshops</h3>
+        <p>Small-group programs on anxiety regulation, burnout recovery, and emotional resilience.</p>
+        <a href="/services" class="s-offering-link">Learn More &rarr;</a>
       </div>
-    </section>
-  
-    <section class="s-emotion">
-      <p class="s-emotion-script">a gentle pause</p>
-      <h2>Try the Emotional Check-In</h2>
-      <p>A private, guided tool that helps you name what you're feeling and reflect on it &mdash; with thoughtful insight rather than judgement. It takes about three minutes. No data is stored.</p>
-      <a href="/emotion-check-in" class="s-emotion-btn">Begin the Check-In</a>
-    </section>
-  
-    <footer class="s-footer">
-      <div class="s-footer-grid">
-        <div>
-          <p class="s-footer-logo">Sentari</p>
-          <p>A psychology practice grounded in evidence, empathy, and the belief that genuine change happens in steady, unhurried conversation.</p>
-        </div>
-        <div>
-          <h4>Explore</h4>
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/articles">Articles</a>
-          <a href="/emotion-check-in">Emotion Check-In</a>
-          <a href="/contact">Contact</a>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <a href="mailto:hello@sentari.com">hello@sentari.com</a>
-          <a href="/contact#contact-form">Book a Session</a>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <a href="/privacy-policy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
-          <a href="/disclaimer">Disclaimer</a>
-        </div>
+    </div>
+  </section>
+
+  <section class="s-articles">
+    <div class="s-articles-header">
+      <div>
+        <p class="s-script-sm">words &amp; reflections</p>
+        <h2>From the Journal</h2>
       </div>
-      <div class="s-footer-bottom">
-        <p>&copy; 2026 <strong>Sentari Psychology</strong>. All Rights Reserved.</p>
-        <p class="s-disclaimer">The content and tools on this site are for educational and reflective purposes only and are not a substitute for professional medical or mental health care. If you are in crisis, please contact Befrienders Kenya at +254 722 178 177 or call 999.</p>
+      <a href="/articles" class="s-learn-btn">All Articles</a>
+    </div>
+    <div class="s-articles-grid">
+      <article class="s-article-card">
+        <div class="s-article-img" style="background-image: url('https://picsum.photos/seed/sentari-art1/600/375');"></div>
+        <div class="s-article-body">
+          <span class="s-article-tag">ANXIETY</span>
+          <h3>The Quiet Cost of High-Functioning Anxiety</h3>
+          <p>Why looking like you're holding it all together can be one of the most exhausting forms of anxiety to live with.</p>
+        </div>
+      </article>
+      <article class="s-article-card">
+        <div class="s-article-img" style="background-image: url('https://picsum.photos/seed/sentari-art2/600/375');"></div>
+        <div class="s-article-body">
+          <span class="s-article-tag">BURNOUT</span>
+          <h3>Recognising Burnout Before It Becomes Collapse</h3>
+          <p>The early signs we tend to dismiss, and what nervous-system informed recovery actually looks like.</p>
+        </div>
+      </article>
+      <article class="s-article-card">
+        <div class="s-article-img" style="background-image: url('https://picsum.photos/seed/sentari-art3/600/375');"></div>
+        <div class="s-article-body">
+          <span class="s-article-tag">RELATIONSHIPS</span>
+          <h3>What Secure Attachment Really Looks Like in Adulthood</h3>
+          <p>Less about being constantly calm, more about how you repair after rupture.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="s-emotion">
+    <p class="s-emotion-script">a gentle pause</p>
+    <h2>Try the Emotional Check-In</h2>
+    <p>A private, guided tool that helps you name what you're feeling and reflect on it &mdash; with thoughtful insight rather than judgement. It takes about three minutes. No data is stored.</p>
+    <a href="/emotion-check-in" class="s-emotion-btn">Begin the Check-In</a>
+  </section>
+
+  <footer class="s-footer">
+    <div class="s-footer-grid">
+      <div>
+        <p class="s-footer-logo">Sentari</p>
+        <p>A psychology practice grounded in evidence, empathy, and the belief that genuine change happens in steady, unhurried conversation.</p>
       </div>
-    </footer>
-  
-  </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/articles">Articles</a>
+        <a href="/emotion-check-in">Emotion Check-In</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@sentari.com">hello@sentari.com</a>
+        <a href="/contact#contact-form">Book a Session</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/disclaimer">Disclaimer</a>
+      </div>
+    </div>
+    <div class="s-footer-bottom">
+      <p>&copy; 2026 <strong>Sentari Psychology</strong>. All Rights Reserved.</p>
+      <p class="s-disclaimer">The content and tools on this site are for educational and reflective purposes only and are not a substitute for professional medical or mental health care. If you are in crisis, please contact Befrienders Kenya at +254 722 178 177 or call 999.</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

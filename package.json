@@ -1,0 +1,8 @@
+{
+    "name": "sentari-psychology",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Sentari Psychology — static site with a serverless emotion check-in API route."
+  }
+  
