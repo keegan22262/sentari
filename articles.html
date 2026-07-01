@@ -121,6 +121,55 @@
     .s-disclaimer { padding: 16px 24px; }
   }
   @media (max-width: 600px) { .s-articles-grid { grid-template-columns: 1fr; } }
+
+  /* ===== Mobile Navigation (hamburger) ===== */
+  .s-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .s-mobile-toggle svg { display: block; width: 26px; height: 26px; }
+  .s-mobile-toggle .icon-close { display: none; }
+  .s-mobile-toggle.open .icon-menu { display: none; }
+  .s-mobile-toggle.open .icon-close { display: block; }
+
+  @media (max-width: 960px) {
+    .s-mobile-toggle { display: block; }
+    .s-nav { position: relative; }
+    #navLinks {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      flex-direction: column;
+      gap: 0;
+      padding: 10px 24px 26px;
+      margin: 0;
+      box-shadow: 0 14px 34px rgba(44,53,48,0.14);
+      border-bottom: 1px solid rgba(44,53,48,0.10);
+      list-style: none;
+    }
+    #navLinks.mobile-open { display: flex; }
+    #navLinks li { width: 100%; }
+    #navLinks a {
+      display: block;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(44,53,48,0.08);
+      font-size: 15px;
+    }
+    #navLinks li:last-child a { border-bottom: none; }
+    #navLinks a.s-nav-cta {
+      display: inline-block;
+      margin-top: 10px;
+      text-align: center;
+      border-bottom: none;
+      padding: 14px 20px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -130,15 +179,19 @@
 
   <nav class="s-nav">
     <a href="/" class="s-nav-logo">Sentari<span>.</span></a>
-    <ul class="s-nav-links">
+    <button class="s-mobile-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+    <ul class="s-nav-links" id="navLinks">
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/services">Services</a></li>
       <li><a href="/articles" class="active">Articles</a></li>
       <li><a href="/emotion-check-in">Emotion Check-In</a></li>
       <li><a href="/contact">Contact</a></li>
+      <li><a href="/contact#contact-form" class="s-nav-cta">Book a Session</a></li>
     </ul>
-    <a href="/contact#contact-form" class="s-nav-links s-nav-cta">Book a Session</a>
   </nav>
 
   <div class="s-articles-header">
@@ -347,5 +400,6 @@
     setTimeout(() => { btn.textContent = 'Subscribe to Articles'; btn.style.background = ''; btn.style.color = ''; }, 3000);
   }
 </script>
+<script src="/assets/mobile-nav.js" defer></script>
 </body>
 </html>
